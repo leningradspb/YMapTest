@@ -12,6 +12,8 @@ import CoreLocation
 
 final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
+    private let trafficLabel = UILabel()
+    private var trafficLayer : YMKTrafficLayer!
     private let drivingRouter = YMKDirectionsFactory.instance().createDrivingRouter(withType: .combined)
     private let drivingOptions: YMKDrivingOptions = {
         let options = YMKDrivingOptions()
@@ -53,6 +55,24 @@ final class MapViewController: UIViewController {
         mapView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+        mapView.addSubview(trafficLabel)
+        trafficLabel.layer.cornerRadius = 14
+        trafficLabel.clipsToBounds = true
+        trafficLabel.textAlignment = .center
+        trafficLabel.font = .systemFont(ofSize: 14, weight: .bold)
+        trafficLabel.textColor = .black
+        
+        trafficLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Constants.Layout.commonVertical)
+            $0.trailing.equalToSuperview().offset(-Constants.Layout.commonHorizontal)
+            $0.width.height.equalTo(28)
+        }
+        trafficLayer = YMKMapKit.sharedInstance().createTrafficLayer(with: mapView.mapWindow)
+        trafficLayer.addTrafficListener(withTrafficListener: self)
+        trafficLabel.text = "0"
+        trafficLabel.backgroundColor = UIColor.white
+        trafficLayer.setTrafficVisibleWithOn(true)
     }
     
     private func updateMap(by location: CLLocation) {
@@ -119,4 +139,39 @@ final class MapViewController: UIViewController {
         alert.addAction(action)
         self.present(alert, animated: true)
     }
+}
+
+extension MapViewController: YMKTrafficDelegate {
+    func onTrafficChanged(with trafficLevel: YMKTrafficLevel?) {
+        print(trafficLevel?.description, trafficLevel?.color, trafficLevel?.level)
+        
+        if trafficLevel == nil {
+            return
+        }
+        trafficLabel.text = String(trafficLevel!.level)
+        switch trafficLevel!.color {
+        case YMKTrafficColor.red:
+            trafficLabel.backgroundColor = UIColor.red
+            break
+        case YMKTrafficColor.green:
+            trafficLabel.backgroundColor = UIColor.green
+            break
+        case YMKTrafficColor.yellow:
+            trafficLabel.backgroundColor = UIColor.yellow
+            break
+        default:
+            trafficLabel.backgroundColor = UIColor.white
+            break
+        }
+    }
+    
+    func onTrafficLoading() {
+        
+    }
+    
+    func onTrafficExpired() {
+        
+    }
+    
+    
 }
