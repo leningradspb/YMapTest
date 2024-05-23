@@ -1,0 +1,6 @@
+framework module Pods_YMapTest {
+  umbrella header "Pods-YMapTest-umbrella.h"
+
+  export *
+  module * { export * }
+}
