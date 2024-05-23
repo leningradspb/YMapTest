@@ -8,9 +8,11 @@
 import UIKit
 import YandexMapsMobile
 import SnapKit
+import CoreLocation
 
 final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
+    private let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,11 @@ final class MapViewController: UIViewController {
 
     private func setupUI() {
         view.backgroundColor = .black
-        setupMap()
+//        setupMap()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            NotificationBanner.shared.show(.info(text: "Вы не предоставили доступ к геолокации. Пожалуйста, перейдите в настройки"))
+        })
     }
     
     private func setupMap() {
@@ -38,6 +44,21 @@ final class MapViewController: UIViewController {
                 animation: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
                 cameraCallback: nil)
     }
+    
+    private func getUserLocation() {
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        } else {
+            
+        }
+    }
 
 }
 
+extension MapViewController: CLLocationManagerDelegate {
+    
+}

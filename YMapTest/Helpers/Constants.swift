@@ -9,6 +9,11 @@ import Foundation
 
 struct Constants {
     
+    struct Layout {
+        static let commonHorizontal: CGFloat = 16
+        static let commonVertical: CGFloat = 16
+    }
+    
     struct YMakpKit {
         static let mapKitKey = "26a91d29-9c93-4795-9f82-0e5b9d0fb0a7"
     }
