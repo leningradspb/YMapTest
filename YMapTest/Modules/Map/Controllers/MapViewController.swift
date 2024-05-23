@@ -12,12 +12,12 @@ import CoreLocation
 
 final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
-    private let locationManager = CLLocationManager()
-
+    private let locationService = LocationService.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getUserLocation()
+        setupLocationService()
         setupUI()
     }
 
@@ -26,42 +26,45 @@ final class MapViewController: UIViewController {
         setupMap()
     }
     
+    private func setupLocationService() {
+        locationService.locationErrorCompletion = { [weak self] in
+            guard let self = self else { return }
+            self.updateMap(by: self.locationService.defaultUserLocation)
+            self.showUserLocationError()
+        }
+        
+        locationService.locationUpdatedCompletion = { [weak self] userLocation in
+            guard let self = self else { return }
+            self.updateMap(by: userLocation)
+        }
+    }
+    
     private func setupMap() {
         view.addSubview(mapView)
+        
         mapView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    private func updateMap(by location: CLLocation) {
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
         mapView.mapWindow.map.move(
                 with: YMKCameraPosition(
-                    target: YMKPoint(latitude: 59.935493, longitude: 30.327392),
-                    zoom: 15,
-                    azimuth: 0,
-                    tilt: 0
+                    target: YMKPoint(latitude: latitude, longitude: longitude),
+                    zoom: Constants.YMakpKit.zoom,
+                    azimuth: Constants.YMakpKit.azimuth,
+                    tilt: Constants.YMakpKit.tilt
                 ),
-                animation: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
+                animation: YMKAnimation(type: YMKAnimationType.smooth, duration: Constants.YMakpKit.duration),
                 cameraCallback: nil)
     }
     
-    private func getUserLocation() {
-        locationManager.requestWhenInUseAuthorization()
-        
-        DispatchQueue.global().async {
-            if CLLocationManager.locationServicesEnabled() {
-                self.locationManager.delegate = self
-                self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                self.locationManager.startUpdatingLocation()
-            } else {
-                DispatchQueue.main.async {
-                    self.showUserLocationError()
-                }
-            }
-        }
-    }
-    
     private func showUserLocationError() {
-        NotificationBanner.shared.show(.info(text: "Вы не предоставили доступ к геолокации. Пожалуйста, перейдите в настройки"))
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
+//        NotificationBanner.shared.show(.info(text: "Вы не предоставили доступ к геолокации. Пожалуйста, перейдите в настройки"))
+//        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
             guard let self = self else { return }
             
             self.showAlert(title: "Вы не предоставили доступ к вашей геолокации", message: "Поэтому вызовем вам такси от Екатеринбург Арены")
@@ -73,20 +76,5 @@ final class MapViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
         self.present(alert, animated: true)
-    }
-}
-
-extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways {
-            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-                if CLLocationManager.isRangingAvailable() {
-                    // do stuff
-                }
-            }
-        }
-        if status == .denied {
-            showUserLocationError()
-        }
     }
 }

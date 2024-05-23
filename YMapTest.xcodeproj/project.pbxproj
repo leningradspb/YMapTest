@@ -18,6 +18,7 @@
 		C39A22232BFFB13D00F1E6D7 /* NotificationBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A22222BFFB13D00F1E6D7 /* NotificationBannerView.swift */; };
 		C39A22262BFFB16C00F1E6D7 /* NotificationBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A22252BFFB16C00F1E6D7 /* NotificationBannerStyle.swift */; };
 		C39A22282BFFB33600F1E6D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A22272BFFB33600F1E6D7 /* Extensions.swift */; };
+		C39A222B2BFFB80400F1E6D7 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A222A2BFFB80400F1E6D7 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C39A22222BFFB13D00F1E6D7 /* NotificationBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBannerView.swift; sourceTree = "<group>"; };
 		C39A22252BFFB16C00F1E6D7 /* NotificationBannerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBannerStyle.swift; sourceTree = "<group>"; };
 		C39A22272BFFB33600F1E6D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C39A222A2BFFB80400F1E6D7 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D14477843FAC6F17B23F085B /* Pods_YMapTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YMapTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4380219259E54F200B63482 /* Pods-YMapTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.release.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 			children = (
 				C3326B1D2BFFA00F00234D26 /* AppDelegate.swift */,
 				C3326B1F2BFFA00F00234D26 /* SceneDelegate.swift */,
+				C39A22292BFFB7F600F1E6D7 /* Services */,
 				C3326B342BFFA3CD00234D26 /* Modules */,
 				C3326B332BFFA3C500234D26 /* Helpers */,
 				C3326B262BFFA01200234D26 /* Assets.xcassets */,
@@ -132,6 +135,14 @@
 				C39A22252BFFB16C00F1E6D7 /* NotificationBannerStyle.swift */,
 			);
 			path = NotificationBanner;
+			sourceTree = "<group>";
+		};
+		C39A22292BFFB7F600F1E6D7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C39A222A2BFFB80400F1E6D7 /* LocationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		EC29A01D08CAB6938F74B7D2 /* Pods */ = {
@@ -282,6 +293,7 @@
 				C3326B322BFFA39600234D26 /* Constants.swift in Sources */,
 				C39A22212BFFB11300F1E6D7 /* NotificationBanner.swift in Sources */,
 				C39A22262BFFB16C00F1E6D7 /* NotificationBannerStyle.swift in Sources */,
+				C39A222B2BFFB80400F1E6D7 /* LocationService.swift in Sources */,
 				C39A22232BFFB13D00F1E6D7 /* NotificationBannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,9 +439,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VH7V2KHZB4;
+				DEVELOPMENT_TEAM = 9875BH6JL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YMapTest/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Description;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -440,7 +455,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kanevsky.YMapTest.YMapTest;
+				PRODUCT_BUNDLE_IDENTIFIER = kanevsky.YMapTest.YMapTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -456,9 +471,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VH7V2KHZB4;
+				DEVELOPMENT_TEAM = 9875BH6JL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YMapTest/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Description;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -469,7 +487,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kanevsky.YMapTest.YMapTest;
+				PRODUCT_BUNDLE_IDENTIFIER = kanevsky.YMapTest.YMapTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
