@@ -17,16 +17,13 @@ final class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getUserLocation()
         setupUI()
     }
 
     private func setupUI() {
         view.backgroundColor = .black
-//        setupMap()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            NotificationBanner.shared.show(.info(text: "Вы не предоставили доступ к геолокации. Пожалуйста, перейдите в настройки"))
-        })
+        setupMap()
     }
     
     private func setupMap() {
@@ -48,17 +45,48 @@ final class MapViewController: UIViewController {
     private func getUserLocation() {
         locationManager.requestWhenInUseAuthorization()
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        } else {
-            
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.delegate = self
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                self.locationManager.startUpdatingLocation()
+            } else {
+                DispatchQueue.main.async {
+                    self.showUserLocationError()
+                }
+            }
         }
     }
-
+    
+    private func showUserLocationError() {
+        NotificationBanner.shared.show(.info(text: "Вы не предоставили доступ к геолокации. Пожалуйста, перейдите в настройки"))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
+            guard let self = self else { return }
+            
+            self.showAlert(title: "Вы не предоставили доступ к вашей геолокации", message: "Поэтому вызовем вам такси от Екатеринбург Арены")
+        })
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
-    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways {
+            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
+                if CLLocationManager.isRangingAvailable() {
+                    // do stuff
+                }
+            }
+        }
+        if status == .denied {
+            showUserLocationError()
+        }
+    }
 }
