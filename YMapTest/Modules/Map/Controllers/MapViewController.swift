@@ -73,6 +73,8 @@ final class MapViewController: UIViewController {
         trafficLabel.text = "0"
         trafficLabel.backgroundColor = UIColor.white
         trafficLayer.setTrafficVisibleWithOn(true)
+        
+        mapView.mapWindow.map.addCameraListener(with: self)
     }
     
     private func updateMap(by location: CLLocation) {
@@ -172,6 +174,10 @@ extension MapViewController: YMKTrafficDelegate {
     func onTrafficExpired() {
         
     }
-    
-    
+}
+
+extension MapViewController: YMKMapCameraListener {
+    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
+        
+    }
 }
