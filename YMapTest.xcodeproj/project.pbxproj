@@ -444,7 +444,7 @@
 				INFOPLIST_FILE = YMapTest/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Description;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -476,7 +476,7 @@
 				INFOPLIST_FILE = YMapTest/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Description;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Необходимо знать ваше точное месторасположение, чтобы подать машину.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

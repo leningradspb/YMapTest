@@ -21,4 +21,9 @@ struct Constants {
         static let tilt: Float = 0
         static let duration: Float = 5
     }
+    
+    struct HardcodedTexts {
+        static let alertLocationErrorTitle = "Вы не предоставили доступ к вашей геолокации"
+        static let alertLocationErrorMessage = "Поэтому вызовем вам такси от Екатеринбург Арены"
+    }
 }

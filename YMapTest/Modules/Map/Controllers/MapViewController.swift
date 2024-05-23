@@ -67,7 +67,7 @@ final class MapViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
             guard let self = self else { return }
             
-            self.showAlert(title: "Вы не предоставили доступ к вашей геолокации", message: "Поэтому вызовем вам такси от Екатеринбург Арены")
+            self.showAlert(title: Constants.HardcodedTexts.alertLocationErrorTitle, message: Constants.HardcodedTexts.alertLocationErrorMessage)
         })
     }
     
