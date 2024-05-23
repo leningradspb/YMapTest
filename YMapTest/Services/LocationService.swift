@@ -12,6 +12,8 @@ final class LocationService: NSObject {
     private let locationManager = CLLocationManager()
     /// Координаты на случай, если пользователь не дал разрешения на использование геолокации (стадион Екатеринург Арена)
     let defaultUserLocation = CLLocation(latitude: 56.832508, longitude: 60.573519)
+    /// Координаты офиса в Екатеринбурге
+    let endLocation = CLLocation(latitude: 56.834195, longitude: 60.635280)
     var userLocation: CLLocation? {
         didSet {
             let location = userLocation ?? defaultUserLocation
@@ -29,10 +31,12 @@ final class LocationService: NSObject {
     }
     
     private func getUserLocation() {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        self.locationManager.startUpdatingLocation()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.locationManager.requestWhenInUseAuthorization()
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            self.locationManager.startUpdatingLocation()
+        }
     }
 }
 
