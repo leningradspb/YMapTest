@@ -80,7 +80,10 @@ final class MapViewController: UIViewController {
     private func updateMap(by location: CLLocation) {
         let startLatitude = location.coordinate.latitude
         let startLongitude = location.coordinate.longitude
+        let endLocation = locationService.endLocation
+        
         DispatchQueue.main.async {
+            self.addPlacemarksOnMap(by: location, endLocation: endLocation)
             self.mapView.mapWindow.map.move(
                     with: YMKCameraPosition(
                         target: YMKPoint(latitude: startLatitude, longitude: startLongitude),
@@ -92,7 +95,6 @@ final class MapViewController: UIViewController {
                     cameraCallback: nil)
         }
         
-        let endLocation = locationService.endLocation
         let endLocationLatitude = endLocation.coordinate.latitude
         let endLocationLongitude = endLocation.coordinate.longitude
         let points = [
@@ -107,6 +109,47 @@ final class MapViewController: UIViewController {
             routeHandler: drivingRouteHandler
         )
         self.drivingSession = drivingSession
+    }
+    
+    private func addPlacemarksOnMap(by startLocation: CLLocation, endLocation: CLLocation) {
+        let startLatitude = startLocation.coordinate.latitude
+        let startLongitude = startLocation.coordinate.longitude
+        
+        let endLocationLatitude = endLocation.coordinate.latitude
+        let endLocationLongitude = endLocation.coordinate.longitude
+        // Задание координат точки
+          let startPoint = YMKPoint(latitude: startLatitude, longitude: startLongitude)
+          let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: startPoint)
+        
+        let endPoint = YMKPoint(latitude: endLocationLatitude, longitude: endLocationLongitude)
+        let viewEndPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: endPoint)
+          
+        // Настройка и добавление иконки
+        viewStartPlacemark.setIconWith(
+              UIImage(named: "Basic_green_dot")!, // Убедитесь, что у вас есть иконка для точки
+              style: YMKIconStyle(
+                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
+                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
+                  zIndex: 0,
+                  flat: true,
+                  visible: true,
+                  scale: 0.1,
+                  tappableArea: nil
+              )
+          )
+        
+        viewEndPlacemark.setIconWith(
+              UIImage(named: "Rad-Circle-3")!, // Убедитесь, что у вас есть иконка для точки
+              style: YMKIconStyle(
+                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
+                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
+                  zIndex: 0,
+                  flat: true,
+                  visible: true,
+                  scale: 0.1,
+                  tappableArea: nil
+              )
+          )
     }
     
     private func drivingRouteHandler(drivingRoutes: [YMKDrivingRoute]?, error: Error?) {
