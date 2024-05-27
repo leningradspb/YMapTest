@@ -13,7 +13,8 @@ import CoreLocation
 final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
     private let trafficLabel = UILabel()
-    private var trafficLayer : YMKTrafficLayer!
+//    private var trafficLayer : YMKTrafficLayer!
+//    private var layer = YMKLayer()
     private let drivingRouter = YMKDirectionsFactory.instance().createDrivingRouter(withType: .combined)
     private let drivingOptions: YMKDrivingOptions = {
         let options = YMKDrivingOptions()
@@ -51,6 +52,27 @@ final class MapViewController: UIViewController {
     
     private func setupMap() {
         view.addSubview(mapView)
+//        mapView.tintColor = .black
+        
+//        let darkLayer = CALayer()
+//        darkLayer.frame = self.view.bounds
+//        darkLayer.compositingFilter = "colorBlendMode"
+//        darkLayer.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0).cgColor
+//        let darkLayer2 = CALayer()
+//        darkLayer2.frame = self.view.bounds
+//        darkLayer2.compositingFilter = "overlayBlendMode"
+//        darkLayer2.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1).cgColor
+//        mapView.layer.addSublayer(darkLayer2)
+//        mapView.layer.addSublayer(darkLayer)
+//        
+//        let darkLayer3 = CALayer()
+//        darkLayer3.frame = self.view.bounds
+//        darkLayer3.compositingFilter = "darkBlendMode"
+//        darkLayer3.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.8).cgColor
+//        mapView.layer.addSublayer(darkLayer3)
+        
+        
+        mapView.mapWindow.map.isNightModeEnabled = true
         
         mapView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -68,11 +90,11 @@ final class MapViewController: UIViewController {
             $0.trailing.equalToSuperview().offset(-Constants.Layout.commonHorizontal)
             $0.width.height.equalTo(28)
         }
-        trafficLayer = YMKMapKit.sharedInstance().createTrafficLayer(with: mapView.mapWindow)
-        trafficLayer.addTrafficListener(withTrafficListener: self)
+//        trafficLayer = YMKMapKit.sharedInstance().createTrafficLayer(with: mapView.mapWindow)
+//        trafficLayer.addTrafficListener(withTrafficListener: self)
         trafficLabel.text = "0"
         trafficLabel.backgroundColor = UIColor.white
-        trafficLayer.setTrafficVisibleWithOn(true)
+//        trafficLayer.setTrafficVisibleWithOn(true)
         
         mapView.mapWindow.map.addCameraListener(with: self)
     }
