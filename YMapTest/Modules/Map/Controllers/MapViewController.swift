@@ -37,6 +37,7 @@ final class MapViewController: UIViewController {
     var placemark: YMKPlacemarkMapObject!
     var timer: Timer!
     var repeats = 1000
+    var fraction = 0.01
 //    private var transportsPinsCollection: YMKMapObjectCollection!
 //    private lazy var mapObjectTapListener = MapObjectTapListener(delegate: self)
     private let trafficLabel = UILabel()
@@ -353,13 +354,16 @@ extension MapViewController: YMKTrafficDelegate {
             let startLongitude = 30.260612
             let endLongitude = 30.247806
             
-            let differenceLatitude = (endLatitude - endLatitude) / 500
-            let differenceLongitude = (endLongitude - startLongitude) / 500
+            let differenceLatitude = (endLatitude - startLatitude) / 500 //* fraction
+            let differenceLongitude = (endLongitude - startLongitude) / 500 //* fraction
+            fraction += 0.01
             
             print(differenceLatitude, differenceLongitude)
             
-            let latitude = self.placemark.geometry.latitude + differenceLatitude
-            let longitude = self.placemark.geometry.longitude + differenceLongitude
+            // if use fraction let latitude = startLatitude + differenceLatitude let longitude = startLongitude + differenceLongitude
+            let latitude = placemark.geometry.latitude + differenceLatitude
+            let longitude = placemark.geometry.longitude + differenceLongitude
+            
             self.placemark.geometry = YMKPoint(latitude: latitude, longitude: longitude)
         }
     }
