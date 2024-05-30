@@ -34,6 +34,9 @@ final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
     /// mapView.mapWindow.map
     private lazy var map = mapView.mapWindow.map
+    var placemark: YMKPlacemarkMapObject!
+    var timer: Timer!
+    var repeats = 1000
 //    private var transportsPinsCollection: YMKMapObjectCollection!
 //    private lazy var mapObjectTapListener = MapObjectTapListener(delegate: self)
     private let trafficLabel = UILabel()
@@ -200,8 +203,6 @@ final class MapViewController: UIViewController {
 //        let placemark = transportsPinsCollection.addPlacemark()
 
 //        Log.debug("WS Route number: \(model.routeNumber); routeUUID: \(model.routeUUID ?? "nil"); points \(model.routePoints.count)", printPath: false)
-        
-        let placemark: YMKPlacemarkMapObject
         let mapObjects = self.mapView.mapWindow.map.mapObjects
         let point = YMKPoint(latitude: latitude, longitude: longitude)
                     
@@ -342,6 +343,26 @@ extension MapViewController: YMKTrafficDelegate {
     func onTrafficExpired() {
         
     }
+    
+    @objc func updateTimer() {
+        if repeats == 0 {
+            timer.invalidate()
+        } else {
+            let startLatitude = 59.961075
+            let endLatitude = 59.962990
+            let startLongitude = 30.260612
+            let endLongitude = 30.247806
+            
+            let differenceLatitude = (endLatitude - endLatitude) / 500
+            let differenceLongitude = (endLongitude - startLongitude) / 500
+            
+            print(differenceLatitude, differenceLongitude)
+            
+            let latitude = self.placemark.geometry.latitude + differenceLatitude
+            let longitude = self.placemark.geometry.longitude + differenceLongitude
+            self.placemark.geometry = YMKPoint(latitude: latitude, longitude: longitude)
+        }
+    }
 }
 
 extension MapViewController: YMKMapCameraListener {
@@ -358,6 +379,18 @@ extension MapViewController: YMKMapSizeChangedListener, YMKMapObjectTapListener 
     func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {
         if let model = mapObject.userData as? SampleModel {
             print(model)
+//            59.961544, 30.257244
+//            59.961075, longitude: 30.260612
+//            YMKPoint(latitude: 59.961544, longitude: 30.257244)
+            //start point 59.961075, longitude: 30.260612
+            // end point 59.962990, 30.247806
+            
+            
+            timer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+//            UIView.animate(withDuration: 1, animations: {
+//                self.placemark.geometry = YMKPoint(latitude: 59.961544, longitude: 30.257244)
+//            })
+            
         } else {
             print("не модель")
         }
