@@ -5,6 +5,26 @@
 //  Created by Eduard Kanevskii on 23.05.2024.
 //
 
+
+protocol MapObjectTapListenerDelegate: AnyObject {
+    func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint)
+}
+
+final class MapObjectTapListener: NSObject, YMKMapObjectTapListener {
+    
+    private weak var delegate: MapObjectTapListenerDelegate?
+
+    init(delegate: MapObjectTapListenerDelegate) {
+        self.delegate = delegate
+    }
+
+    func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {
+        delegate?.onMapObjectTap(with: mapObject, point: point)
+        return true
+    }
+}
+
+
 import UIKit
 import YandexMapsMobile
 import SnapKit
@@ -12,7 +32,12 @@ import CoreLocation
 
 final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
+    /// mapView.mapWindow.map
+    private lazy var map = mapView.mapWindow.map
+//    private var transportsPinsCollection: YMKMapObjectCollection!
+//    private lazy var mapObjectTapListener = MapObjectTapListener(delegate: self)
     private let trafficLabel = UILabel()
+    let placemarkStyle = YMKIconStyle()
 //    private var trafficLayer : YMKTrafficLayer!
 //    private var layer = YMKLayer()
     private let drivingRouter = YMKDirectionsFactory.instance().createDrivingRouter(withType: .combined)
@@ -24,12 +49,21 @@ final class MapViewController: UIViewController {
     private var drivingSession: YMKDrivingSession?
         
     private let locationService = LocationService.shared
+    /// 59.961075, 30.260612
+    let userLocation = CLLocation(latitude: 59.961075, longitude: 30.260612)
+    private var currentZoom: Float = Constants.YMakpKit.zoom
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLocationService()
+//        setupLocationService()
         setupUI()
+        
+        self.updateMap2(by: userLocation)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.addPlaceMark(latitude: 59.961075, longitude: 30.260612)
+        })
     }
 
     private func setupUI() {
@@ -97,6 +131,34 @@ final class MapViewController: UIViewController {
 //        trafficLayer.setTrafficVisibleWithOn(true)
         
         mapView.mapWindow.map.addCameraListener(with: self)
+//        transportsPinsCollection = map.mapObjects.add()
+    }
+    
+    private func updateMap2(by location: CLLocation) {
+        let startLatitude = location.coordinate.latitude
+        let startLongitude = location.coordinate.longitude
+        let endLocation = locationService.endLocation
+        
+        DispatchQueue.main.async {
+            self.addPlacemarksOnMap(by: location, endLocation: endLocation)
+            self.mapView.mapWindow.map.move(
+                    with: YMKCameraPosition(
+                        target: YMKPoint(latitude: startLatitude, longitude: startLongitude),
+                        zoom: Constants.YMakpKit.zoom,
+                        azimuth: Constants.YMakpKit.azimuth,
+                        tilt: Constants.YMakpKit.tilt
+                    ),
+                    animation: YMKAnimation(type: YMKAnimationType.smooth, duration: Constants.YMakpKit.duration),
+                    cameraCallback: nil)
+        }
+        
+        let endLocationLatitude = endLocation.coordinate.latitude
+        let endLocationLongitude = endLocation.coordinate.longitude
+        let points = [
+            YMKRequestPoint(point: YMKPoint(latitude: startLatitude, longitude: startLongitude), type: .waypoint, pointContext: nil, drivingArrivalPointId: nil),
+            YMKRequestPoint(point: YMKPoint(latitude: endLocationLatitude, longitude: endLocationLongitude), type: .waypoint, pointContext: nil, drivingArrivalPointId: nil)
+        ]
+        
     }
     
     private func updateMap(by location: CLLocation) {
@@ -131,6 +193,47 @@ final class MapViewController: UIViewController {
             routeHandler: drivingRouteHandler
         )
         self.drivingSession = drivingSession
+    }
+    
+    func addPlaceMark(latitude: Double, longitude: Double) {
+//        transportsPinsCollection.clear()
+//        let placemark = transportsPinsCollection.addPlacemark()
+
+//        Log.debug("WS Route number: \(model.routeNumber); routeUUID: \(model.routeUUID ?? "nil"); points \(model.routePoints.count)", printPath: false)
+        
+        let placemark: YMKPlacemarkMapObject
+        let mapObjects = self.mapView.mapWindow.map.mapObjects
+        let point = YMKPoint(latitude: latitude, longitude: longitude)
+                    
+        placemark = mapObjects.addPlacemark(with: point, image: UIImage(named: "busS")!)
+        placemark.geometry = point
+//        placemark.userData = MarkerUserData(id: Int(hit.id!)!, description: hit.plate!)
+//        placemark.isDraggable = false
+        placemark.addTapListener(with: self)
+                    
+//        mapObjects.addListener(with: self)
+
+//        placemark.geometry = .init(latitude: latitude, longitude: longitude)
+//        placemark.addTapListener(with: mapObjectTapListener)
+//        placemark.setViewWithView(YRTViewProvider(uiView: view), style: placemarkStyle)
+//        placemark.setViewWithView(view, style: placemarkStyle)
+        // 59.961307, longitude: 30.258416
+        let model = SampleModel(name: "Name", latitude: latitude, longitude: longitude)
+        placemark.userData = model
+    }
+    
+    func move(to geometry: YMKGeometry, zoom: Float? = nil) {
+        //        YMKCameraPosition(
+        //        mapView.mapWindow.map.position
+        var cameraPosition = map.cameraPosition(with: geometry)
+        cameraPosition = YMKCameraPosition(
+            target: cameraPosition.target,
+            zoom: zoom ?? cameraPosition.zoom,
+            azimuth: cameraPosition.azimuth,
+            tilt: cameraPosition.tilt
+        )
+        currentZoom = cameraPosition.zoom
+        map.move(with: cameraPosition, animation: Constants.YMakpKit.mapAnimation)
     }
     
     private func addPlacemarksOnMap(by startLocation: CLLocation, endLocation: CLLocation) {
@@ -245,4 +348,25 @@ extension MapViewController: YMKMapCameraListener {
     func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
         
     }
+}
+
+extension MapViewController: YMKMapSizeChangedListener, YMKMapObjectTapListener {
+    
+    func onMapWindowSizeChanged(with mapWindow: YMKMapWindow, newWidth: Int, newHeight: Int) {
+    }
+    
+    func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {
+        if let model = mapObject.userData as? SampleModel {
+            print(model)
+        } else {
+            print("не модель")
+        }
+        return true
+    }
+}
+
+
+struct SampleModel: Decodable {
+    let name: String
+    let latitude, longitude: CLLocationDegrees
 }

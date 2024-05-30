@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import YandexMapsMobile
 
 struct Constants {
     
@@ -20,6 +21,7 @@ struct Constants {
         static let azimuth: Float = 0
         static let tilt: Float = 0
         static let duration: Float = 5
+        static let mapAnimation = YMKAnimation(type: .smooth, duration: 0.3)
     }
     
     struct HardcodedTexts {
