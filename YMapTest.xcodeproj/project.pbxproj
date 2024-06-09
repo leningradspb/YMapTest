@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		928B734A0E4BA9BDA6F032A3 /* Pods_YMapTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14477843FAC6F17B23F085B /* Pods_YMapTest.framework */; };
+		1645D1D3FABC2B2A481BB033 /* Pods_YMapTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */; };
 		C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1D2BFFA00F00234D26 /* AppDelegate.swift */; };
 		C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1F2BFFA00F00234D26 /* SceneDelegate.swift */; };
 		C3326B222BFFA00F00234D26 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B212BFFA00F00234D26 /* MapViewController.swift */; };
@@ -22,7 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B7628119C1EC6771AC0EE48 /* Pods-YMapTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.debug.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.debug.xcconfig"; sourceTree = "<group>"; };
+		454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YMapTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B782188053772D412CD573E /* Pods-YMapTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.release.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.release.xcconfig"; sourceTree = "<group>"; };
+		6FECE9621E2AECB0CE31475D /* Pods-YMapTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.debug.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.debug.xcconfig"; sourceTree = "<group>"; };
 		C3326B1A2BFFA00F00234D26 /* YMapTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YMapTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3326B1D2BFFA00F00234D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3326B1F2BFFA00F00234D26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,8 +38,6 @@
 		C39A22252BFFB16C00F1E6D7 /* NotificationBannerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBannerStyle.swift; sourceTree = "<group>"; };
 		C39A22272BFFB33600F1E6D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C39A222A2BFFB80400F1E6D7 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		D14477843FAC6F17B23F085B /* Pods_YMapTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YMapTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4380219259E54F200B63482 /* Pods-YMapTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.release.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +45,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				928B734A0E4BA9BDA6F032A3 /* Pods_YMapTest.framework in Frameworks */,
+				1645D1D3FABC2B2A481BB033 /* Pods_YMapTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		43C1E7E90554256BEF73B71B /* Frameworks */ = {
+		63EF720736E10A8CA080A952 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D14477843FAC6F17B23F085B /* Pods_YMapTest.framework */,
+				454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -66,7 +66,7 @@
 				C3326B1C2BFFA00F00234D26 /* YMapTest */,
 				C3326B1B2BFFA00F00234D26 /* Products */,
 				EC29A01D08CAB6938F74B7D2 /* Pods */,
-				43C1E7E90554256BEF73B71B /* Frameworks */,
+				63EF720736E10A8CA080A952 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,8 +148,8 @@
 		EC29A01D08CAB6938F74B7D2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1B7628119C1EC6771AC0EE48 /* Pods-YMapTest.debug.xcconfig */,
-				F4380219259E54F200B63482 /* Pods-YMapTest.release.xcconfig */,
+				6FECE9621E2AECB0CE31475D /* Pods-YMapTest.debug.xcconfig */,
+				6B782188053772D412CD573E /* Pods-YMapTest.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -161,12 +161,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3326B2E2BFFA01200234D26 /* Build configuration list for PBXNativeTarget "YMapTest" */;
 			buildPhases = (
-				58788850CBC6B6ED3E53885F /* [CP] Check Pods Manifest.lock */,
+				AB144159D00D911D310B6BBB /* [CP] Check Pods Manifest.lock */,
 				C3326B162BFFA00F00234D26 /* Sources */,
 				C3326B172BFFA00F00234D26 /* Frameworks */,
 				C3326B182BFFA00F00234D26 /* Resources */,
-				B7CB568185E0891BA1818663 /* [CP] Embed Pods Frameworks */,
-				FF8EF2285E6E87128B8D0DA9 /* [CP] Copy Pods Resources */,
+				417B38DAF32E3EE5799777F8 /* [CP] Embed Pods Frameworks */,
+				C7950B93399E6F4252D02D5C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,7 +223,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		58788850CBC6B6ED3E53885F /* [CP] Check Pods Manifest.lock */ = {
+		417B38DAF32E3EE5799777F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YMapTest/Pods-YMapTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YMapTest/Pods-YMapTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YMapTest/Pods-YMapTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB144159D00D911D310B6BBB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -245,24 +262,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B7CB568185E0891BA1818663 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YMapTest/Pods-YMapTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YMapTest/Pods-YMapTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YMapTest/Pods-YMapTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FF8EF2285E6E87128B8D0DA9 /* [CP] Copy Pods Resources */ = {
+		C7950B93399E6F4252D02D5C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -433,7 +433,7 @@
 		};
 		C3326B2F2BFFA01200234D26 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B7628119C1EC6771AC0EE48 /* Pods-YMapTest.debug.xcconfig */;
+			baseConfigurationReference = 6FECE9621E2AECB0CE31475D /* Pods-YMapTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -465,7 +465,7 @@
 		};
 		C3326B302BFFA01200234D26 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4380219259E54F200B63482 /* Pods-YMapTest.release.xcconfig */;
+			baseConfigurationReference = 6B782188053772D412CD573E /* Pods-YMapTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

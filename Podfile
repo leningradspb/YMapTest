@@ -7,5 +7,8 @@ target 'YMapTest' do
 
 pod 'YandexMapsMobile', '4.6.1-full'
 pod 'SnapKit'
+pod 'FloatingPanel'
+pod 'Kingfisher'
+pod 'Alamofire'
 
 end
