@@ -53,6 +53,10 @@ final class MapViewController: UIViewController {
     private var drivingSession: YMKDrivingSession?
     private var userLocationDotPlacemark: YMKPlacemarkMapObject?
     private var userLocationPinPlacemark: YMKPlacemarkMapObject?
+    
+    private let searchManager = YMKSearchFactory.instance().createSearchManager(with: .combined)
+    private var suggestSession: YMKSearchSuggestSession!
+    private var searchSession: YMKSearchSession?
         
     private let locationService = LocationService.shared
     /// 59.961075, 30.260612
@@ -190,6 +194,8 @@ final class MapViewController: UIViewController {
 //            "all": ["road", "landscape", "water", "poi"]
 //        },
         mapView.mapWindow.map.setMapStyleWithStyle(style)
+        
+        suggestSession = searchManager.createSuggestSession()
     }
     
     private func updateMap2(by location: CLLocation) {
@@ -455,8 +461,53 @@ extension MapViewController: YMKTrafficDelegate {
 
 extension MapViewController: YMKMapCameraListener {
     func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
-        print(cameraPosition.target.latitude, cameraPosition.target.longitude, finished)
+//        print(cameraPosition.target.latitude, cameraPosition.target.longitude, finished)
         movePinOnMap(by: cameraPosition.target)
+        
+        
+        if finished {
+            searchSession = searchManager.submit(with: cameraPosition.target, zoom: NSNumber(floatLiteral: Double(cameraPosition.zoom)), searchOptions: .init(searchTypes: .geo, resultPageSize: 10, snippets: [], userPosition: userLocationDotPlacemark?.geometry, origin: nil, geometry: true, disableSpellingCorrection: true, filters: nil), responseHandler: {
+                result, error in
+    //            self.handler?(result, error)
+//                print(result, error)
+                switch result {
+                case .some(let response):
+//                    print(response.metadata.found, "requestText = \(response.metadata.requestText)", "context = \(response.metadata.context)" , "name = \(response.metadata.toponym?.name)", response.collection.boundingBox,  response.collection.metadataContainer, response.metadata.toponymResultMetadata, response.metadata.toponymResultMetadata?.found, response.metadata.toponymResultMetadata?.description, response.metadata.toponymResultMetadata?.responseInfo?.accuracy, response.metadata.toponymResultMetadata, response.collection.children.first?.obj?.name, response.collection.children.count)
+//                    response.metadata.toponym?.aref.forEach {
+//                        print("$0", $0)
+//                    }
+//                    $0.obj?.metadataContainer
+                    response.collection.children.forEach {
+                        print($0.obj?.aref.first, $0.obj?.name)
+                        
+                        $0.obj?.attributionMap.forEach {
+                            print($0.key, $0.value)
+                        }
+                    }
+    //                response.items.forEach {
+    //                    print($0.center, $0.displayText, $0.title.text)
+    //                }
+                default:
+                    break
+                }
+            })
+        }
+      
+
+//        suggestSession.suggest(withText: "восточна", window: YMKBoundingBox(southWest: cameraPosition.target, northEast: cameraPosition.target), suggestOptions: .init(suggestTypes: .geo, userPosition: userLocationDotPlacemark?.geometry, suggestWords: true), responseHandler: { res, err in
+//            print(res, err)
+//            switch res {
+//            case .some(let response):
+//                response.items.forEach {
+//                    print($0.center, $0.displayText, $0.title.text)
+//                }
+//            default:
+//                break
+//            }
+//        })
+//        suggestSession.submit(with: cameraPosition.target, zoom: NSNumber(floatLiteral: Double(cameraPosition.zoom)), searchOptions: .init(searchTypes: .geo, resultPageSize: 1.0, snippets: .panoramas, userPosition: userLocationDotPlacemark?.geometry, origin: nil, geometry: true, disableSpellingCorrection: true, filters: nil), responseHandler: { first, second  in
+//            print(first, second)
+//        })
     }
 }
 
