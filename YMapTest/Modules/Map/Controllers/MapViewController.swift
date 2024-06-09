@@ -52,6 +52,7 @@ final class MapViewController: UIViewController {
     }()
     private var drivingSession: YMKDrivingSession?
     private var userLocationDotPlacemark: YMKPlacemarkMapObject?
+    private var userLocationPinPlacemark: YMKPlacemarkMapObject?
         
     private let locationService = LocationService.shared
     /// 59.961075, 30.260612
@@ -339,6 +340,29 @@ final class MapViewController: UIViewController {
 //          )
     }
     
+    private func movePinOnMap(by point: YMKPoint) {
+        if let userLocationPinPlacemark = userLocationPinPlacemark {
+            self.userLocationPinPlacemark?.geometry = point
+            return
+        }
+        
+        let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: point)
+        // Настройка и добавление иконки
+        viewStartPlacemark.setIconWith(
+              UIImage(named: "location_pin")!, // Убедитесь, что у вас есть иконка для точки
+              style: YMKIconStyle(
+                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
+                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
+                  zIndex: 0,
+                  flat: true,
+                  visible: true,
+                  scale: 1,
+                  tappableArea: nil
+              )
+          )
+        userLocationPinPlacemark = viewStartPlacemark
+    }
+    
     private func drivingRouteHandler(drivingRoutes: [YMKDrivingRoute]?, error: Error?) {
         if let error {
             // Handle request routes error
@@ -431,7 +455,8 @@ extension MapViewController: YMKTrafficDelegate {
 
 extension MapViewController: YMKMapCameraListener {
     func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
-        
+        print(cameraPosition.target.latitude, cameraPosition.target.longitude, finished)
+        movePinOnMap(by: cameraPosition.target)
     }
 }
 
