@@ -51,6 +51,7 @@ final class MapViewController: UIViewController {
         return options
     }()
     private var drivingSession: YMKDrivingSession?
+    private var userLocationDotPlacemark: YMKPlacemarkMapObject?
         
     private let locationService = LocationService.shared
     /// 59.961075, 30.260612
@@ -293,6 +294,10 @@ final class MapViewController: UIViewController {
     }
     
     private func addPlacemarksOnMap(by startLocation: CLLocation, endLocation: CLLocation) {
+        if let userLocationDotPlacemark = userLocationDotPlacemark {
+            mapView.mapWindow.map.mapObjects.remove(with: userLocationDotPlacemark)
+        }
+        
         let startLatitude = startLocation.coordinate.latitude
         let startLongitude = startLocation.coordinate.longitude
         
@@ -318,6 +323,7 @@ final class MapViewController: UIViewController {
                   tappableArea: nil
               )
           )
+        userLocationDotPlacemark = viewStartPlacemark
         
 //        viewEndPlacemark.setIconWith(
 //              UIImage(named: "Rad-Circle-3")!, // Убедитесь, что у вас есть иконка для точки
