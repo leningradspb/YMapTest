@@ -63,11 +63,15 @@ final class MapViewController: UIViewController {
 //        setupLocationService()
         setupUI()
         
-        self.updateMap2(by: userLocation)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            self.addPlaceMark(latitude: 59.961075, longitude: 30.260612)
-        })
+        locationService.locationUpdatedCompletion = { [weak self] location in
+            self?.updateMap2(by: location)
+        }
+        
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+//            self.addPlaceMark(latitude: 59.961075, longitude: 30.260612)
+//        })
     }
 
     private func setupUI() {
@@ -110,7 +114,7 @@ final class MapViewController: UIViewController {
 //        mapView.layer.addSublayer(darkLayer3)
         
         
-        mapView.mapWindow.map.isNightModeEnabled = true
+//        mapView.mapWindow.map.isNightModeEnabled = true
         
         mapView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -136,13 +140,61 @@ final class MapViewController: UIViewController {
         
         mapView.mapWindow.map.addCameraListener(with: self)
 //        transportsPinsCollection = map.mapObjects.add()
+        
+//        let style = """
+//        [{
+//            "featureType" : "all",
+//            "stylers": {
+//                "lightness": "lightness": -0.5
+//            }
+//        }]
+//        """
+        let style = """
+        [
+            {
+                "elements": "geometry.fill.pattern",
+                        "stylers": {
+                                        "saturation": -0.75
+                                    }
+            },
+            {
+                "elements": "geometry.outline",
+                        "stylers": {
+                                        "saturation": -0.75
+                                    }
+            },
+            {
+                "elements": "geometry.fill",
+                        "stylers": {
+                                        "saturation": -0.95,
+                                "lightness": 0.55
+                                    }
+            },
+            {
+                "elements": "label.text.fill",
+                        "stylers": {
+                                        "saturation": -0.75
+                                    }
+            },
+            {
+                "elements": "label.icon",
+                    "stylers": {
+                                    "saturation": -0.75
+                                }
+        }
+        ]
+"""
+//        "tags": {
+//            "all": ["road", "landscape", "water", "poi"]
+//        },
+        mapView.mapWindow.map.setMapStyleWithStyle(style)
     }
     
     private func updateMap2(by location: CLLocation) {
         let startLatitude = location.coordinate.latitude
         let startLongitude = location.coordinate.longitude
         let endLocation = locationService.endLocation
-        
+        print(startLatitude, startLongitude)
         DispatchQueue.main.async {
             self.addPlacemarksOnMap(by: location, endLocation: endLocation)
             self.mapView.mapWindow.map.move(
@@ -158,10 +210,10 @@ final class MapViewController: UIViewController {
         
         let endLocationLatitude = endLocation.coordinate.latitude
         let endLocationLongitude = endLocation.coordinate.longitude
-        let points = [
-            YMKRequestPoint(point: YMKPoint(latitude: startLatitude, longitude: startLongitude), type: .waypoint, pointContext: nil, drivingArrivalPointId: nil),
-            YMKRequestPoint(point: YMKPoint(latitude: endLocationLatitude, longitude: endLocationLongitude), type: .waypoint, pointContext: nil, drivingArrivalPointId: nil)
-        ]
+//        let points = [
+//            YMKRequestPoint(point: YMKPoint(latitude: startLatitude, longitude: startLongitude), type: .waypoint, pointContext: nil, drivingArrivalPointId: nil),
+//            YMKRequestPoint(point: YMKPoint(latitude: endLocationLatitude, longitude: endLocationLongitude), type: .waypoint, pointContext: nil, drivingArrivalPointId: nil)
+//        ]
         
     }
     
@@ -246,37 +298,37 @@ final class MapViewController: UIViewController {
         let endLocationLongitude = endLocation.coordinate.longitude
         // Задание координат точки
           let startPoint = YMKPoint(latitude: startLatitude, longitude: startLongitude)
-          let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: startPoint)
+//          let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: startPoint)
         
         let endPoint = YMKPoint(latitude: endLocationLatitude, longitude: endLocationLongitude)
-        let viewEndPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: endPoint)
+//        let viewEndPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: endPoint)
           
         // Настройка и добавление иконки
-        viewStartPlacemark.setIconWith(
-              UIImage(named: "Basic_green_dot")!, // Убедитесь, что у вас есть иконка для точки
-              style: YMKIconStyle(
-                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
-                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
-                  zIndex: 0,
-                  flat: true,
-                  visible: true,
-                  scale: 0.1,
-                  tappableArea: nil
-              )
-          )
+//        viewStartPlacemark.setIconWith(
+//              UIImage(named: "Basic_green_dot")!, // Убедитесь, что у вас есть иконка для точки
+//              style: YMKIconStyle(
+//                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
+//                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
+//                  zIndex: 0,
+//                  flat: true,
+//                  visible: true,
+//                  scale: 0.1,
+//                  tappableArea: nil
+//              )
+//          )
         
-        viewEndPlacemark.setIconWith(
-              UIImage(named: "Rad-Circle-3")!, // Убедитесь, что у вас есть иконка для точки
-              style: YMKIconStyle(
-                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
-                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
-                  zIndex: 0,
-                  flat: true,
-                  visible: true,
-                  scale: 0.1,
-                  tappableArea: nil
-              )
-          )
+//        viewEndPlacemark.setIconWith(
+//              UIImage(named: "Rad-Circle-3")!, // Убедитесь, что у вас есть иконка для точки
+//              style: YMKIconStyle(
+//                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
+//                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
+//                  zIndex: 0,
+//                  flat: true,
+//                  visible: true,
+//                  scale: 0.1,
+//                  tappableArea: nil
+//              )
+//          )
     }
     
     private func drivingRouteHandler(drivingRoutes: [YMKDrivingRoute]?, error: Error?) {

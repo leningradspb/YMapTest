@@ -58,7 +58,7 @@ extension LocationService: CLLocationManagerDelegate {
             return
         }
         // TODO: отправить запрос на сервер с локацией пользователя
-        
+        print(loc.coordinate.latitude, loc.coordinate.longitude, "loc")
        self.userLocation = loc
     }
 }
