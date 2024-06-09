@@ -196,6 +196,8 @@ final class MapViewController: UIViewController {
         let endLocation = locationService.endLocation
         print(startLatitude, startLongitude)
         DispatchQueue.main.async {
+//            let userLocationView = YMKUserLocationView()
+//            self.onObjectAdded(with: userLocationView)
             self.addPlacemarksOnMap(by: location, endLocation: endLocation)
             self.mapView.mapWindow.map.move(
                     with: YMKCameraPosition(
@@ -223,7 +225,7 @@ final class MapViewController: UIViewController {
         let endLocation = locationService.endLocation
         
         DispatchQueue.main.async {
-            self.addPlacemarksOnMap(by: location, endLocation: endLocation)
+//            self.addPlacemarksOnMap(by: location, endLocation: endLocation)
             self.mapView.mapWindow.map.move(
                     with: YMKCameraPosition(
                         target: YMKPoint(latitude: startLatitude, longitude: startLongitude),
@@ -298,24 +300,24 @@ final class MapViewController: UIViewController {
         let endLocationLongitude = endLocation.coordinate.longitude
         // Задание координат точки
           let startPoint = YMKPoint(latitude: startLatitude, longitude: startLongitude)
-//          let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: startPoint)
+          let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: startPoint)
         
         let endPoint = YMKPoint(latitude: endLocationLatitude, longitude: endLocationLongitude)
 //        let viewEndPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: endPoint)
           
         // Настройка и добавление иконки
-//        viewStartPlacemark.setIconWith(
-//              UIImage(named: "Basic_green_dot")!, // Убедитесь, что у вас есть иконка для точки
-//              style: YMKIconStyle(
-//                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
-//                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
-//                  zIndex: 0,
-//                  flat: true,
-//                  visible: true,
-//                  scale: 0.1,
-//                  tappableArea: nil
-//              )
-//          )
+        viewStartPlacemark.setIconWith(
+              UIImage(named: "user_location_icon")!, // Убедитесь, что у вас есть иконка для точки
+              style: YMKIconStyle(
+                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
+                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
+                  zIndex: 0,
+                  flat: true,
+                  visible: true,
+                  scale: 0.1,
+                  tappableArea: nil
+              )
+          )
         
 //        viewEndPlacemark.setIconWith(
 //              UIImage(named: "Rad-Circle-3")!, // Убедитесь, что у вас есть иконка для точки
