@@ -39,4 +39,34 @@ struct Constants {
         static let userLocationIcon = "user_location_icon"
         static let locationPinLight = "location_pin_light"
     }
+    
+    enum MapButtons: CaseIterable {
+        case zoomIn, zoomOut, backToCurrentLocation
+       
+        var iconName: String {
+            switch self {
+            case .zoomIn:
+                return Constants.Icons.zoomInLight
+            case .zoomOut:
+                return Constants.Icons.zoomOutLight
+            case .backToCurrentLocation:
+                return Constants.Icons.backToLocationLight
+            }
+        }
+        
+        var tag: Int {
+            switch self {
+            case .zoomIn:
+                return MapButtonTag.zoomIn.rawValue
+            case .zoomOut:
+                return MapButtonTag.zoomOut.rawValue
+            case .backToCurrentLocation:
+                return MapButtonTag.backToCurrentLocation.rawValue
+            }
+        }
+        
+        enum MapButtonTag: Int {
+            case zoomIn, zoomOut, backToCurrentLocation
+        }
+    }
 }

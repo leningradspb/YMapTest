@@ -34,7 +34,7 @@ final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
     /// стек в котором можно расположить кнопки + - локация и пауза (для паузы надо добавить пустое вью, чтобы соблюсти отступы)
     private let mapButtonsStack = VerticalStackView(spacing: Constants.Layout.mapButtonsStackSpacing)
-    private let mapButtonsNames = [Constants.Icons.zoomInLight, Constants.Icons.zoomOutLight, Constants.Icons.backToLocationLight]
+    private let mapButtonsData = Constants.MapButtons.allCases
     /// mapView.mapWindow.map
     private lazy var map = mapView.mapWindow.map
     var placemark: YMKPlacemarkMapObject!
@@ -206,11 +206,13 @@ final class MapViewController: UIViewController {
     private func setupMapStackView() {
         view.addSubview(mapButtonsStack)
         
-        for index in 0..<mapButtonsNames.count {
+        for index in 0..<mapButtonsData.count {
             let button = UIButton()
-            let name = mapButtonsNames[index]
-            button.setImage(UIImage(named: name), for: .normal)
-            button.tag = index
+            let mapButtonData = mapButtonsData[index]
+            let iconName = mapButtonData.iconName
+            let tag = mapButtonData.tag
+            button.setImage(UIImage(named: iconName), for: .normal)
+            button.tag = tag
             button.snp.makeConstraints {
                 $0.width.height.equalTo(Constants.Layout.mapButton)
             }
@@ -430,6 +432,17 @@ final class MapViewController: UIViewController {
     
     @objc private func mapButtonTapped(sender: UIButton) {
         print(sender.tag)
+        switch sender.tag {
+        case Constants.MapButtons.MapButtonTag.zoomIn.rawValue:
+            print("zoomIn")
+        case Constants.MapButtons.MapButtonTag.zoomOut.rawValue:
+            print("zoomOut")
+        case Constants.MapButtons.MapButtonTag.backToCurrentLocation.rawValue:
+            print("backToCurrentLocation")
+        default:
+            print("Нет тэга для mapButton")
+            break
+        }
     }
 }
 
