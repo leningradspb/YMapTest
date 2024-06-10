@@ -430,15 +430,40 @@ final class MapViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    private func changeZoom(by amount: Float) {
+        map.move(
+            with: YMKCameraPosition(
+                target: map.cameraPosition.target,
+                zoom: map.cameraPosition.zoom + amount,
+                azimuth: map.cameraPosition.azimuth,
+                tilt: map.cameraPosition.tilt
+            ),
+            animation: YMKAnimation(type: .smooth, duration: 1.0)
+        )
+    }
+    
     @objc private func mapButtonTapped(sender: UIButton) {
         print(sender.tag)
         switch sender.tag {
         case Constants.MapButtons.MapButtonTag.zoomIn.rawValue:
             print("zoomIn")
+            changeZoom(by: 1)
         case Constants.MapButtons.MapButtonTag.zoomOut.rawValue:
             print("zoomOut")
+            changeZoom(by: -1)
         case Constants.MapButtons.MapButtonTag.backToCurrentLocation.rawValue:
             print("backToCurrentLocation")
+            if let target = userLocationDotPlacemark?.geometry {
+                map.move(
+                    with: YMKCameraPosition(
+                        target: target,
+                        zoom: map.cameraPosition.zoom,
+                        azimuth: map.cameraPosition.azimuth,
+                        tilt: map.cameraPosition.tilt
+                    ),
+                    animation: YMKAnimation(type: .smooth, duration: 1.0)
+                )
+            }
         default:
             print("Нет тэга для mapButton")
             break
