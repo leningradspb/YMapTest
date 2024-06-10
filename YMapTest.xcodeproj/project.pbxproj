@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1645D1D3FABC2B2A481BB033 /* Pods_YMapTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */; };
+		26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4715B2C16DAFB0046ABEE /* StackViews.swift */; };
 		C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1D2BFFA00F00234D26 /* AppDelegate.swift */; };
 		C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1F2BFFA00F00234D26 /* SceneDelegate.swift */; };
 		C3326B222BFFA00F00234D26 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B212BFFA00F00234D26 /* MapViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26C4715B2C16DAFB0046ABEE /* StackViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViews.swift; sourceTree = "<group>"; };
 		454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YMapTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B782188053772D412CD573E /* Pods-YMapTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.release.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.release.xcconfig"; sourceTree = "<group>"; };
 		6FECE9621E2AECB0CE31475D /* Pods-YMapTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.debug.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				C3326B312BFFA39600234D26 /* Constants.swift */,
 				C39A22242BFFB14400F1E6D7 /* NotificationBanner */,
 				C39A22272BFFB33600F1E6D7 /* Extensions.swift */,
+				26C4715B2C16DAFB0046ABEE /* StackViews.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3326B222BFFA00F00234D26 /* MapViewController.swift in Sources */,
+				26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */,
 				C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */,
 				C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */,
 				C39A22282BFFB33600F1E6D7 /* Extensions.swift in Sources */,

@@ -32,6 +32,9 @@ import CoreLocation
 
 final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
+    /// стек в котором можно расположить кнопки + - локация и пауза (для паузы надо добавить пустое вью, чтобы соблюсти отступы)
+    private let mapButtonsStack = VerticalStackView(spacing: Constants.Layout.mapButtonsStackSpacing)
+    private let mapButtonsNames = [Constants.Icons.zoomInLight, Constants.Icons.zoomOutLight, Constants.Icons.backToLocationLight]
     /// mapView.mapWindow.map
     private lazy var map = mapView.mapWindow.map
     var placemark: YMKPlacemarkMapObject!
@@ -196,6 +199,29 @@ final class MapViewController: UIViewController {
         mapView.mapWindow.map.setMapStyleWithStyle(style)
         
         suggestSession = searchManager.createSuggestSession()
+        
+        setupMapStackView()
+    }
+    
+    private func setupMapStackView() {
+        view.addSubview(mapButtonsStack)
+        
+        for index in 0..<mapButtonsNames.count {
+            let button = UIButton()
+            let name = mapButtonsNames[index]
+            button.setImage(UIImage(named: name), for: .normal)
+            button.tag = index
+            button.snp.makeConstraints {
+                $0.width.height.equalTo(Constants.Layout.mapButton)
+            }
+            button.addTarget(self, action: #selector(mapButtonTapped), for: .touchUpInside)
+            mapButtonsStack.addArrangedSubview(button)
+        }
+        
+        mapButtonsStack.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-Constants.Layout.commonHorizontal)
+            $0.centerY.equalToSuperview().offset(Constants.Layout.mapButtonsStackCenterYOffset)
+        }
     }
     
     private func updateMap2(by location: CLLocation) {
@@ -400,6 +426,10 @@ final class MapViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
         self.present(alert, animated: true)
+    }
+    
+    @objc private func mapButtonTapped(sender: UIButton) {
+        print(sender.tag)
     }
 }
 
