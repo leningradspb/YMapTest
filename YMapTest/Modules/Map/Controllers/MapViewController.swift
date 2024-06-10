@@ -477,12 +477,13 @@ extension MapViewController: YMKMapCameraListener {
 //                        print("$0", $0)
 //                    }
 //                    $0.obj?.metadataContainer
+                    print(response.collection.children.count)
                     response.collection.children.forEach {
                         print($0.obj?.aref.first, $0.obj?.name)
-                        
-                        $0.obj?.attributionMap.forEach {
-                            print($0.key, $0.value)
-                        }
+//                        print($0.obj?.attributionMap.values.count)
+//                        $0.obj?.attributionMap.forEach {
+//                            print($0.key, $0.value)
+//                        }
                     }
     //                response.items.forEach {
     //                    print($0.center, $0.displayText, $0.title.text)
