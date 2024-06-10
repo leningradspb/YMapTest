@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "28D330AF-FC17-4D21-98CD-0C09683DA1A8"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "21F3C41C-90C7-49D7-8407-210525C92DB1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Services/LocationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49EE75EC-7A0B-4EDE-B6EA-05DA8CF72C18"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "updateMap2(by:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "49EE75EC-7A0B-4EDE-B6EA-05DA8CF72C18 - 6191214c408f022e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YMapTest.MapViewController.updateMap2(by: __C.CLLocation) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "648">
+               </Location>
+               <Location
+                  uuid = "49EE75EC-7A0B-4EDE-B6EA-05DA8CF72C18 - 6743ed7b6b75cc75"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in YMapTest.MapViewController.updateMap2(by: __C.CLLocation) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "49EE75EC-7A0B-4EDE-B6EA-05DA8CF72C18 - 6191214c408f05aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YMapTest.MapViewController.updateMap2(by: __C.CLLocation) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "648">
+               </Location>
+               <Location
+                  uuid = "49EE75EC-7A0B-4EDE-B6EA-05DA8CF72C18 - 6743ed7b6b75ccf1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in YMapTest.MapViewController.updateMap2(by: __C.CLLocation) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF3D1EC7-04FB-494B-B690-53CF95DC9605"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
+            landmarkName = "onCameraPositionChanged(with:cameraPosition:cameraUpdateReason:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "101BB519-8396-4675-BFEA-BF9211EA9FB2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "592"
+            endingLineNumber = "592"
+            landmarkName = "onCameraPositionChanged(with:cameraPosition:cameraUpdateReason:finished:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "101BB519-8396-4675-BFEA-BF9211EA9FB2 - 532d312840def8f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YMapTest.MapViewController.onCameraPositionChanged(with: __C.YMKMap, cameraPosition: __C.YMKCameraPosition, cameraUpdateReason: __C.YMKCameraUpdateReason, finished: Swift.Bool) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "461"
+                  endingLineNumber = "461"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "101BB519-8396-4675-BFEA-BF9211EA9FB2 - 3cc4898de9869c6d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.YMKSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in YMapTest.MapViewController.onCameraPositionChanged(with: __C.YMKMap, cameraPosition: __C.YMKCameraPosition, cameraUpdateReason: __C.YMKCameraUpdateReason, finished: Swift.Bool) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "462"
+                  endingLineNumber = "462"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "101BB519-8396-4675-BFEA-BF9211EA9FB2 - 532d312840def87f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YMapTest.MapViewController.onCameraPositionChanged(with: __C.YMKMap, cameraPosition: __C.YMKCameraPosition, cameraUpdateReason: __C.YMKCameraUpdateReason, finished: Swift.Bool) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "465"
+                  endingLineNumber = "465"
+                  offsetFromSymbolStart = "844">
+               </Location>
+               <Location
+                  uuid = "101BB519-8396-4675-BFEA-BF9211EA9FB2 - f59f634e743eb6e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;__C.YMKSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in YMapTest.MapViewController.onCameraPositionChanged(with: __C.YMKMap, cameraPosition: __C.YMKCameraPosition, cameraUpdateReason: __C.YMKCameraUpdateReason, finished: Swift.Bool) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "466"
+                  endingLineNumber = "466"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "46C923F4-4986-4548-A98B-9FACFA74EDBC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "582"
+            endingLineNumber = "582"
+            landmarkName = "onCameraPositionChanged(with:cameraPosition:cameraUpdateReason:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "05F2AC9A-3556-430E-B0CA-28671C38A51A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "571"
+            endingLineNumber = "571"
+            landmarkName = "onCameraPositionChanged(with:cameraPosition:cameraUpdateReason:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3A72E1B-0EFC-4D77-B90B-968E03E1B380"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "558"
+            endingLineNumber = "558"
+            landmarkName = "onCameraPositionChanged(with:cameraPosition:cameraUpdateReason:finished:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E3A72E1B-0EFC-4D77-B90B-968E03E1B380 - 3cc4898de9868238"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.YMKSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in YMapTest.MapViewController.onCameraPositionChanged(with: __C.YMKMap, cameraPosition: __C.YMKCameraPosition, cameraUpdateReason: __C.YMKCameraUpdateReason, finished: Swift.Bool) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "475"
+                  endingLineNumber = "475"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  uuid = "E3A72E1B-0EFC-4D77-B90B-968E03E1B380 - 3cc4898de9868238"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.YMKSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in YMapTest.MapViewController.onCameraPositionChanged(with: __C.YMKMap, cameraPosition: __C.YMKCameraPosition, cameraUpdateReason: __C.YMKCameraUpdateReason, finished: Swift.Bool) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "475"
+                  endingLineNumber = "475"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F1D5450-7C46-4150-9F81-B075A3C4C42D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "559"
+            endingLineNumber = "559"
+            landmarkName = "onCameraPositionChanged(with:cameraPosition:cameraUpdateReason:finished:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2F1D5450-7C46-4150-9F81-B075A3C4C42D - 3cc4898de986825f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.YMKSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in YMapTest.MapViewController.onCameraPositionChanged(with: __C.YMKMap, cameraPosition: __C.YMKCameraPosition, cameraUpdateReason: __C.YMKCameraUpdateReason, finished: Swift.Bool) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "476"
+                  endingLineNumber = "476"
+                  offsetFromSymbolStart = "2604">
+               </Location>
+               <Location
+                  uuid = "2F1D5450-7C46-4150-9F81-B075A3C4C42D - 90f1c13ee76d54b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in closure #1 (Swift.Optional&lt;__C.YMKSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in YMapTest.MapViewController.onCameraPositionChanged(with: __C.YMKMap, cameraPosition: __C.YMKCameraPosition, cameraUpdateReason: __C.YMKCameraUpdateReason, finished: Swift.Bool) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "477"
+                  endingLineNumber = "477"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "2F1D5450-7C46-4150-9F81-B075A3C4C42D - 3cc4898de986825f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.YMKSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in YMapTest.MapViewController.onCameraPositionChanged(with: __C.YMKMap, cameraPosition: __C.YMKCameraPosition, cameraUpdateReason: __C.YMKCameraUpdateReason, finished: Swift.Bool) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "476"
+                  endingLineNumber = "476"
+                  offsetFromSymbolStart = "3236">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11CC9146-B194-4279-8B49-E64127628BCF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "setupMapStackView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B307D83D-0629-4247-8593-FCA01F14387E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
+            landmarkName = "movePinOnMap(by:finished:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B307D83D-0629-4247-8593-FCA01F14387E - 5ce68691d4fb7a6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YMapTest.MapViewController.addPlacemarksOnMap(by: __C.CLLocation, endLocation: __C.CLLocation) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "375"
+                  endingLineNumber = "375"
+                  offsetFromSymbolStart = "1560">
+               </Location>
+               <Location
+                  uuid = "B307D83D-0629-4247-8593-FCA01F14387E - d1b775963749f79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YMapTest.MapViewController.movePinOnMap(by: __C.YMKPoint) -&gt; ()"
+                  moduleName = "YMapTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardsinyakov/Downloads/YMapTest/YMapTest/Modules/Map/Controllers/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362"
+                  offsetFromSymbolStart = "332">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "648DBFAD-B87A-405F-B19F-5B85FEE7CA93"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YMapTest/Modules/Map/Controllers/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
+            landmarkName = "movePinOnMap(by:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

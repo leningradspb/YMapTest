@@ -29,6 +29,7 @@ import UIKit
 import YandexMapsMobile
 import SnapKit
 import CoreLocation
+import FloatingPanel
 
 final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
@@ -70,6 +71,9 @@ final class MapViewController: UIViewController {
     let userLocation = CLLocation(latitude: 59.961075, longitude: 30.260612)
     private var currentZoom: Float = Constants.YMakpKit.zoom
     
+    
+    var fpc: FloatingPanelController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,9 +86,40 @@ final class MapViewController: UIViewController {
         }
         
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
 //            self.addPlaceMark(latitude: 59.961075, longitude: 30.260612)
-//        })
+            let vc = UIViewController()
+            let rect = UIView()
+            rect.backgroundColor = .red
+            vc.view.addSubview(rect)
+            
+            rect.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(100)
+                $0.width.height.equalTo(200)
+                $0.centerX.equalToSuperview()
+                $0.bottom.equalToSuperview().offset(-100)
+            }
+            
+            self.showFPC(vc: vc)
+//            Router.bottomSheet.present(vc)
+        })
+    }
+    
+    private func showFPC(vc: UIViewController) {
+        fpc = FloatingPanelController()
+        
+        // Assign self as the delegate of the controller.
+        fpc.delegate = self // Optional
+        
+        // Set a content view controller.
+        //                    let contentVC = ContentViewController()
+        fpc.set(contentViewController: vc)
+        
+        // Track a scroll view(or the siblings) in the content view controller.
+        //                    fpc.track(scrollView: contentVC.tableView)
+        
+        // Add and show the views managed by the `FloatingPanelController` object to self.view.
+        fpc.addPanel(toParent: self)
     }
 
     private func setupUI() {
@@ -626,4 +661,9 @@ extension MapViewController: YMKMapSizeChangedListener, YMKMapObjectTapListener 
 struct SampleModel: Decodable {
     let name: String
     let latitude, longitude: CLLocationDegrees
+}
+
+
+extension MapViewController: FloatingPanelControllerDelegate {
+    
 }
