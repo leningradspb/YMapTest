@@ -100,7 +100,8 @@ final class MapViewController: UIViewController {
                 $0.bottom.equalToSuperview().offset(-100)
             }
             
-            self.showFPC(vc: vc)
+//            self.showFPC(vc: vc)
+            self.presentFPC(contentVC: vc)
 //            Router.bottomSheet.present(vc)
         })
     }
@@ -120,6 +121,19 @@ final class MapViewController: UIViewController {
         
         // Add and show the views managed by the `FloatingPanelController` object to self.view.
         fpc.addPanel(toParent: self)
+    }
+    
+    private func presentFPC(contentVC: UIViewController) {
+        fpc = FloatingPanelController()
+        fpc.layout = IntrinsicPanelLayout()
+        
+        // Assign self as the delegate of the controller.
+        fpc.delegate = self // Optional
+        fpc.set(contentViewController: contentVC)
+
+//        fpc.isRemovalInteractionEnabled = true // Optional: Let it removable by a swipe-down
+
+        self.present(fpc, animated: true, completion: nil)
     }
 
     private func setupUI() {
@@ -666,4 +680,13 @@ struct SampleModel: Decodable {
 
 extension MapViewController: FloatingPanelControllerDelegate {
     
+}
+
+class IntrinsicPanelLayout: FloatingPanelBottomLayout {
+    override var initialState: FloatingPanelState { .full }
+    override var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
+        return [
+            .full: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.0, referenceGuide: .safeArea)
+        ]
+    }
 }
