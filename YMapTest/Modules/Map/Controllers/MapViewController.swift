@@ -229,12 +229,12 @@ final class MapViewController: UIViewController {
     private func updateMap2(by location: CLLocation) {
         let startLatitude = location.coordinate.latitude
         let startLongitude = location.coordinate.longitude
-        let endLocation = locationService.endLocation
-        print(startLatitude, startLongitude)
+//        let endLocation = locationService.endLocation
+//        print(startLatitude, startLongitude)
         DispatchQueue.main.async {
 //            let userLocationView = YMKUserLocationView()
 //            self.onObjectAdded(with: userLocationView)
-            self.addPlacemarksOnMap(by: location, endLocation: endLocation)
+            self.addUserLocationOnMap(by: location)
             self.mapView.mapWindow.map.move(
                     with: YMKCameraPosition(
                         target: YMKPoint(latitude: startLatitude, longitude: startLongitude),
@@ -246,8 +246,8 @@ final class MapViewController: UIViewController {
                     cameraCallback: nil)
         }
         
-        let endLocationLatitude = endLocation.coordinate.latitude
-        let endLocationLongitude = endLocation.coordinate.longitude
+//        let endLocationLatitude = endLocation.coordinate.latitude
+//        let endLocationLongitude = endLocation.coordinate.longitude
 //        let points = [
 //            YMKRequestPoint(point: YMKPoint(latitude: startLatitude, longitude: startLongitude), type: .waypoint, pointContext: nil, drivingArrivalPointId: nil),
 //            YMKRequestPoint(point: YMKPoint(latitude: endLocationLatitude, longitude: endLocationLongitude), type: .waypoint, pointContext: nil, drivingArrivalPointId: nil)
@@ -328,7 +328,7 @@ final class MapViewController: UIViewController {
         map.move(with: cameraPosition, animation: Constants.YMakpKit.mapAnimation)
     }
     
-    private func addPlacemarksOnMap(by startLocation: CLLocation, endLocation: CLLocation) {
+    private func addUserLocationOnMap(by startLocation: CLLocation) {
         if let userLocationDotPlacemark = userLocationDotPlacemark {
             mapView.mapWindow.map.mapObjects.remove(with: userLocationDotPlacemark)
         }
@@ -336,14 +336,9 @@ final class MapViewController: UIViewController {
         let startLatitude = startLocation.coordinate.latitude
         let startLongitude = startLocation.coordinate.longitude
         
-        let endLocationLatitude = endLocation.coordinate.latitude
-        let endLocationLongitude = endLocation.coordinate.longitude
         // Задание координат точки
-          let startPoint = YMKPoint(latitude: startLatitude, longitude: startLongitude)
-          let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: startPoint)
-        
-        let endPoint = YMKPoint(latitude: endLocationLatitude, longitude: endLocationLongitude)
-//        let viewEndPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: endPoint)
+        let startPoint = YMKPoint(latitude: startLatitude, longitude: startLongitude)
+        let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: startPoint)
           
         // Настройка и добавление иконки
         viewStartPlacemark.setIconWith(
@@ -359,19 +354,6 @@ final class MapViewController: UIViewController {
               )
           )
         userLocationDotPlacemark = viewStartPlacemark
-        
-//        viewEndPlacemark.setIconWith(
-//              UIImage(named: "Rad-Circle-3")!, // Убедитесь, что у вас есть иконка для точки
-//              style: YMKIconStyle(
-//                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
-//                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
-//                  zIndex: 0,
-//                  flat: true,
-//                  visible: true,
-//                  scale: 0.1,
-//                  tappableArea: nil
-//              )
-//          )
     }
     
     private func movePinOnMap(by point: YMKPoint) {
