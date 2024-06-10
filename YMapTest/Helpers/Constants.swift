@@ -28,4 +28,12 @@ struct Constants {
         static let alertLocationErrorTitle = "Вы не предоставили доступ к вашей геолокации"
         static let alertLocationErrorMessage = "Поэтому вызовем вам такси от Екатеринбург Арены"
     }
+    
+    struct Icons {
+        static let backToLocationLight = "back_to_current_location_light"
+        static let zoomInLight = "zoom_in_light"
+        static let zoomOutLight = "zoom_out_light"
+        static let userLocationIcon = "user_location_icon"
+        static let locationPinLight = "location_pin_light"
+    }
 }

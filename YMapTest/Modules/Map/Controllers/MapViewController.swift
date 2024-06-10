@@ -119,7 +119,7 @@ final class MapViewController: UIViewController {
 //        darkLayer3.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.8).cgColor
 //        mapView.layer.addSublayer(darkLayer3)
         
-        
+        // Тёмная тема темная dark mode
 //        mapView.mapWindow.map.isNightModeEnabled = true
         
         mapView.snp.makeConstraints {
@@ -319,7 +319,7 @@ final class MapViewController: UIViewController {
           
         // Настройка и добавление иконки
         viewStartPlacemark.setIconWith(
-              UIImage(named: "user_location_icon")!, // Убедитесь, что у вас есть иконка для точки
+            UIImage(named: Constants.Icons.userLocationIcon)!, // Убедитесь, что у вас есть иконка для точки
               style: YMKIconStyle(
                   anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
                   rotationType: YMKRotationType.rotate.rawValue as NSNumber,
@@ -355,7 +355,7 @@ final class MapViewController: UIViewController {
         let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: point)
         // Настройка и добавление иконки
         viewStartPlacemark.setIconWith(
-              UIImage(named: "location_pin")!, // Убедитесь, что у вас есть иконка для точки
+            UIImage(named: Constants.Icons.locationPinLight)!, // Убедитесь, что у вас есть иконка для точки
               style: YMKIconStyle(
                   anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
                   rotationType: YMKRotationType.rotate.rawValue as NSNumber,
