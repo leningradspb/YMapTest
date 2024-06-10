@@ -32,6 +32,7 @@ import CoreLocation
 
 final class MapViewController: UIViewController {
     private let mapView = YMKMapView(frame: .zero)!
+    private let pinImageView = UIImageView(image: UIImage(named: Constants.Icons.locationPinLight))
     /// стек в котором можно расположить кнопки + - локация и пауза (для паузы надо добавить пустое вью, чтобы соблюсти отступы)
     private let mapButtonsStack = VerticalStackView(spacing: Constants.Layout.mapButtonsStackSpacing)
     private let mapButtonsData = Constants.MapButtons.allCases
@@ -55,11 +56,14 @@ final class MapViewController: UIViewController {
     }()
     private var drivingSession: YMKDrivingSession?
     private var userLocationDotPlacemark: YMKPlacemarkMapObject?
-    private var userLocationPinPlacemark: YMKPlacemarkMapObject?
+    private var pinPoint: YMKPoint?
+//    private var userLocationPinPlacemark: YMKPlacemarkMapObject?
     
     private let searchManager = YMKSearchFactory.instance().createSearchManager(with: .combined)
     private var suggestSession: YMKSearchSuggestSession!
     private var searchSession: YMKSearchSession?
+    
+    private var isPinAnimating = false
         
     private let locationService = LocationService.shared
     /// 59.961075, 30.260612
@@ -201,6 +205,16 @@ final class MapViewController: UIViewController {
         suggestSession = searchManager.createSuggestSession()
         
         setupMapStackView()
+        addPinOnMap()
+    }
+    
+    private func addPinOnMap() {
+        view.addSubview(pinImageView)
+        
+        pinImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+        }
     }
     
     private func setupMapStackView() {
@@ -356,27 +370,46 @@ final class MapViewController: UIViewController {
         userLocationDotPlacemark = viewStartPlacemark
     }
     
-    private func movePinOnMap(by point: YMKPoint) {
-        if let userLocationPinPlacemark = userLocationPinPlacemark {
-            self.userLocationPinPlacemark?.geometry = point
-            return
-        }
+    private func movePinOnMap(by point: YMKPoint, finished: Bool) {
+        pinPoint = point
         
-        let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: point)
-        // Настройка и добавление иконки
-        viewStartPlacemark.setIconWith(
-            UIImage(named: Constants.Icons.locationPinLight)!, // Убедитесь, что у вас есть иконка для точки
-              style: YMKIconStyle(
-                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
-                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
-                  zIndex: 0,
-                  flat: true,
-                  visible: true,
-                  scale: 1,
-                  tappableArea: nil
-              )
-          )
-        userLocationPinPlacemark = viewStartPlacemark
+//        if finished {
+//            UIView.animate(withDuration: 0.25, animations: {
+//                self.pinImageView.frame.origin.y = self.view.frame.height / 2
+//                self.isPinAnimating = false
+//            })
+//        } else {
+//            if !isPinAnimating {
+//                UIView.animate(withDuration: 0.5, animations: {
+//                    self.pinImageView.frame.origin.y -= Constants.YMakpKit.pinImageViewYOffset
+//                    self.isPinAnimating = true
+//                })
+//            }
+//            
+//        }
+        
+        
+//        if let userLocationPinPlacemark = userLocationPinPlacemark {
+//            self.userLocationPinPlacemark?.geometry = point
+//            print(self.userLocationPinPlacemark?.direction)
+//            return
+//        }
+//        
+//        let viewStartPlacemark: YMKPlacemarkMapObject = mapView.mapWindow.map.mapObjects.addPlacemark(with: point)
+//        // Настройка и добавление иконки
+//        viewStartPlacemark.setIconWith(
+//            UIImage(named: Constants.Icons.locationPinLight)!, // Убедитесь, что у вас есть иконка для точки
+//              style: YMKIconStyle(
+//                  anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
+//                  rotationType: YMKRotationType.rotate.rawValue as NSNumber,
+//                  zIndex: 0,
+//                  flat: true,
+//                  visible: true,
+//                  scale: 1,
+//                  tappableArea: nil
+//              )
+//          )
+//        userLocationPinPlacemark = viewStartPlacemark
     }
     
     private func drivingRouteHandler(drivingRoutes: [YMKDrivingRoute]?, error: Error?) {
@@ -512,37 +545,37 @@ extension MapViewController: YMKTrafficDelegate {
 extension MapViewController: YMKMapCameraListener {
     func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
 //        print(cameraPosition.target.latitude, cameraPosition.target.longitude, finished)
-        movePinOnMap(by: cameraPosition.target)
+        movePinOnMap(by: cameraPosition.target, finished: finished)
         
         
-        if finished {
-            searchSession = searchManager.submit(with: cameraPosition.target, zoom: NSNumber(floatLiteral: Double(cameraPosition.zoom)), searchOptions: .init(searchTypes: .geo, resultPageSize: 10, snippets: [], userPosition: userLocationDotPlacemark?.geometry, origin: nil, geometry: true, disableSpellingCorrection: true, filters: nil), responseHandler: {
-                result, error in
-    //            self.handler?(result, error)
-//                print(result, error)
-                switch result {
-                case .some(let response):
-//                    print(response.metadata.found, "requestText = \(response.metadata.requestText)", "context = \(response.metadata.context)" , "name = \(response.metadata.toponym?.name)", response.collection.boundingBox,  response.collection.metadataContainer, response.metadata.toponymResultMetadata, response.metadata.toponymResultMetadata?.found, response.metadata.toponymResultMetadata?.description, response.metadata.toponymResultMetadata?.responseInfo?.accuracy, response.metadata.toponymResultMetadata, response.collection.children.first?.obj?.name, response.collection.children.count)
-//                    response.metadata.toponym?.aref.forEach {
-//                        print("$0", $0)
+//        if finished {
+//            searchSession = searchManager.submit(with: cameraPosition.target, zoom: NSNumber(floatLiteral: Double(cameraPosition.zoom)), searchOptions: .init(searchTypes: .geo, resultPageSize: 10, snippets: [], userPosition: userLocationDotPlacemark?.geometry, origin: nil, geometry: true, disableSpellingCorrection: true, filters: nil), responseHandler: {
+//                result, error in
+//    //            self.handler?(result, error)
+////                print(result, error)
+//                switch result {
+//                case .some(let response):
+////                    print(response.metadata.found, "requestText = \(response.metadata.requestText)", "context = \(response.metadata.context)" , "name = \(response.metadata.toponym?.name)", response.collection.boundingBox,  response.collection.metadataContainer, response.metadata.toponymResultMetadata, response.metadata.toponymResultMetadata?.found, response.metadata.toponymResultMetadata?.description, response.metadata.toponymResultMetadata?.responseInfo?.accuracy, response.metadata.toponymResultMetadata, response.collection.children.first?.obj?.name, response.collection.children.count)
+////                    response.metadata.toponym?.aref.forEach {
+////                        print("$0", $0)
+////                    }
+////                    $0.obj?.metadataContainer
+//                    print(response.collection.children.count)
+//                    response.collection.children.forEach {
+//                        print($0.obj?.aref.first, $0.obj?.name)
+////                        print($0.obj?.attributionMap.values.count)
+////                        $0.obj?.attributionMap.forEach {
+////                            print($0.key, $0.value)
+////                        }
 //                    }
-//                    $0.obj?.metadataContainer
-                    print(response.collection.children.count)
-                    response.collection.children.forEach {
-                        print($0.obj?.aref.first, $0.obj?.name)
-//                        print($0.obj?.attributionMap.values.count)
-//                        $0.obj?.attributionMap.forEach {
-//                            print($0.key, $0.value)
-//                        }
-                    }
-    //                response.items.forEach {
-    //                    print($0.center, $0.displayText, $0.title.text)
-    //                }
-                default:
-                    break
-                }
-            })
-        }
+//    //                response.items.forEach {
+//    //                    print($0.center, $0.displayText, $0.title.text)
+//    //                }
+//                default:
+//                    break
+//                }
+//            })
+//        }
       
 
 //        suggestSession.suggest(withText: "восточна", window: YMKBoundingBox(southWest: cameraPosition.target, northEast: cameraPosition.target), suggestOptions: .init(suggestTypes: .geo, userPosition: userLocationDotPlacemark?.geometry, suggestWords: true), responseHandler: { res, err in
