@@ -87,25 +87,25 @@ final class MapViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
 //            self.addPlaceMark(latitude: 59.961075, longitude: 30.260612)
-            let vc = UIViewController()
-            let rect = UIView()
-            rect.backgroundColor = .primaryColor
-            vc.view.addSubview(rect)
-            let label = UILabel()
-            label.text = "Принять Радищева, 16"
-            label.font = .appFont(weight: .regular, size: 14)
-            
-            rect.snp.makeConstraints {
-                $0.top.equalToSuperview().offset(100)
-                $0.width.height.equalTo(200)
-                $0.centerX.equalToSuperview()
-                $0.bottom.equalToSuperview().offset(-100)
-            }
-            
-            rect.addSubview(label)
-            label.snp.makeConstraints {
-                $0.center.equalToSuperview()
-            }
+//            let vc = UIViewController()
+//            let rect = UIView()
+//            rect.backgroundColor = .primaryColor
+//            vc.view.addSubview(rect)
+//            let label = UILabel()
+//            label.text = "Принять Радищева, 16"
+//            label.font = .appFont(weight: .regular, size: 14)
+//            
+//            rect.snp.makeConstraints {
+//                $0.top.equalToSuperview().offset(100)
+//                $0.width.height.equalTo(200)
+//                $0.centerX.equalToSuperview()
+//                $0.bottom.equalToSuperview().offset(-100)
+//            }
+//            
+//            rect.addSubview(label)
+//            label.snp.makeConstraints {
+//                $0.center.equalToSuperview()
+//            }
             
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
 ////                vc.overrideUserInterfaceStyle = .light
@@ -115,6 +115,8 @@ final class MapViewController: UIViewController {
 //            self.showFPC(vc: vc)
 //            self.presentFPC(contentVC: vc)
 //            ModalPresenter.shared.presentModalController(contentVC: vc)
+            let model = CommonModalViewController.Model(title: "Точно хотите отменить заказ?", subtitle: "Если сейчас отменить, поиск новой машины может быть дольше", primaryButtonText: nil, secondaryButtonText: nil, textAlignment: .center)
+            let vc = CommonModalViewController(model: model)
             ModalPresenter.shared.presentModalController(contentVC: vc)
 //            Router.bottomSheet.present(vc)
         })

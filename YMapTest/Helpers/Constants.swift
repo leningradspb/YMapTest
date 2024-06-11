@@ -11,10 +11,17 @@ import YandexMapsMobile
 struct Constants {
     
     struct Layout {
+        /// 24
         static let commonHorizontal: CGFloat = 24
+        /// 24
+        static let extraVertical: CGFloat = 24
+        /// 16
         static let commonVertical: CGFloat = 16
+        /// 50
         static let mapButton: CGFloat = 50
+        /// -30
         static let mapButtonsStackCenterYOffset: CGFloat = -30
+        /// 12
         static let mapButtonsStackSpacing: CGFloat = 12
     }
     

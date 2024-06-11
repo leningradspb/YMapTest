@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         YMKMapKit.setApiKey(Constants.YMakpKit.mapKitKey)
         YMKMapKit.sharedInstance()
 //        YMKMapKit.sharedInstance().onStart()
+       
         return true
     }
 

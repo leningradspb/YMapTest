@@ -27,7 +27,7 @@ public class ModalPresenter {
     
     private init() {}
     
-    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = false, isHideByTapGesture: Bool = true) {
+    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true) {
         fpc = FloatingPanelController()
         
         switch state {

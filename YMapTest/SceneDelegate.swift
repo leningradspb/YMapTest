@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = MapViewController()
+        window.overrideUserInterfaceStyle = .light
         self.window = window
+//        UIApplication.shared.windows.first!.overrideUserInterfaceStyle = .light
         window.makeKeyAndVisible()
     }
 

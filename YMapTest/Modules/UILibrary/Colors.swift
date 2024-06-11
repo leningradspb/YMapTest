@@ -21,6 +21,17 @@ public extension UIColor {
         }
     }()
     
+    /// Основной цвет (темная тема = белый, светлая - черный)
+    static var textColor: UIColor = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return .mainWhite
+            } else {
+                return .mainBlack
+            }
+        }
+    }()
+    
     /// Цвет фона за модалкой (черная тема - без цвета, светлая тема - черный с альфа 60%)
     static var modalBackViewColor: UIColor = {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
