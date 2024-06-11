@@ -7,13 +7,12 @@
 
 import UIKit
 
-public class PrimaryButton: UIButton {
+public class PrimaryButton: UIView {
+    private let textLabel = UILabel()
     
     public var text: String? {
         didSet {
-            setTitle(text, for: .normal)
-            setTitle(text, for: .selected)
-            setTitle(text, for: .highlighted)
+            textLabel.text = text
         }
     }
     
@@ -27,14 +26,16 @@ public class PrimaryButton: UIButton {
     }
     
     private func setupUI(text: String) {
+        addSubview(textLabel)
+        textLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.leading.greaterThanOrEqualToSuperview().offset(Constants.Layout.commonHorizontal)
+            $0.trailing.lessThanOrEqualToSuperview().offset(-Constants.Layout.commonHorizontal)
+        }
         backgroundColor = .primaryButtonBackgroundColor
-        titleLabel?.font = .appFont(weight: .medium, size: 16)
-        setTitle(text, for: .normal)
-        setTitle(text, for: .selected)
-        setTitle(text, for: .highlighted)
-        setTitleColor(.primaryButtonTintColor, for: .normal)
-        setTitleColor(.primaryButtonTintColor, for: .selected)
-        setTitleColor(.primaryButtonTintColor, for: .highlighted)
+        textLabel.textColor = .primaryButtonTintColor
+        textLabel.font = .appFont(weight: .medium, size: 16)
         
         self.snp.makeConstraints {
             $0.height.equalTo(Constants.Layout.buttonHeight)

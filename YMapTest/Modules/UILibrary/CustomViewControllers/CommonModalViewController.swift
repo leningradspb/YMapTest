@@ -80,6 +80,11 @@ public class CommonModalViewController: UIViewController {
         
         primaryButton.text = primaryButtonText
         secondaryButton.text = secondaryButtonText
+        
+        primaryButton.addActionOnTap { [weak self] in
+            guard let self = self else { return }
+            print("Primary button action")
+        }
     }
 }
 
