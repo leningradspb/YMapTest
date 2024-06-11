@@ -11,6 +11,17 @@
 		26738D7C2C182569008DF0BC /* ModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D7B2C182569008DF0BC /* ModalPresenter.swift */; };
 		26738D802C182A9E008DF0BC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D7F2C182A9E008DF0BC /* Colors.swift */; };
 		26738D822C182B5E008DF0BC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D812C182B5E008DF0BC /* UIColor+Extension.swift */; };
+		26738D902C183EF1008DF0BC /* Manrope-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26738D852C183EF1008DF0BC /* Manrope-VariableFont_wght.ttf */; };
+		26738D912C183EF1008DF0BC /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26738D872C183EF1008DF0BC /* Manrope-Medium.ttf */; };
+		26738D922C183EF1008DF0BC /* Manrope-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26738D882C183EF1008DF0BC /* Manrope-SemiBold.ttf */; };
+		26738D932C183EF1008DF0BC /* Manrope-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26738D892C183EF1008DF0BC /* Manrope-ExtraBold.ttf */; };
+		26738D942C183EF1008DF0BC /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26738D8A2C183EF1008DF0BC /* Manrope-Regular.ttf */; };
+		26738D952C183EF1008DF0BC /* Manrope-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26738D8B2C183EF1008DF0BC /* Manrope-ExtraLight.ttf */; };
+		26738D962C183EF1008DF0BC /* Manrope-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26738D8C2C183EF1008DF0BC /* Manrope-Light.ttf */; };
+		26738D972C183EF1008DF0BC /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26738D8D2C183EF1008DF0BC /* Manrope-Bold.ttf */; };
+		26738D982C183EF1008DF0BC /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26738D8E2C183EF1008DF0BC /* OFL.txt */; };
+		26738D992C183EF1008DF0BC /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26738D8F2C183EF1008DF0BC /* README.txt */; };
+		26738D9B2C18407D008DF0BC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D9A2C18407D008DF0BC /* UIFont+Extension.swift */; };
 		26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4715B2C16DAFB0046ABEE /* StackViews.swift */; };
 		C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1D2BFFA00F00234D26 /* AppDelegate.swift */; };
 		C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1F2BFFA00F00234D26 /* SceneDelegate.swift */; };
@@ -29,6 +40,17 @@
 		26738D7B2C182569008DF0BC /* ModalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
 		26738D7F2C182A9E008DF0BC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		26738D812C182B5E008DF0BC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		26738D852C183EF1008DF0BC /* Manrope-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		26738D872C183EF1008DF0BC /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
+		26738D882C183EF1008DF0BC /* Manrope-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-SemiBold.ttf"; sourceTree = "<group>"; };
+		26738D892C183EF1008DF0BC /* Manrope-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraBold.ttf"; sourceTree = "<group>"; };
+		26738D8A2C183EF1008DF0BC /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
+		26738D8B2C183EF1008DF0BC /* Manrope-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraLight.ttf"; sourceTree = "<group>"; };
+		26738D8C2C183EF1008DF0BC /* Manrope-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Light.ttf"; sourceTree = "<group>"; };
+		26738D8D2C183EF1008DF0BC /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
+		26738D8E2C183EF1008DF0BC /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		26738D8F2C183EF1008DF0BC /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		26738D9A2C18407D008DF0BC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		26C4715B2C16DAFB0046ABEE /* StackViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViews.swift; sourceTree = "<group>"; };
 		454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YMapTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B782188053772D412CD573E /* Pods-YMapTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.release.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,11 +85,46 @@
 		26738D7A2C182559008DF0BC /* UILibrary */ = {
 			isa = PBXGroup;
 			children = (
+				26738D832C183EDB008DF0BC /* Fonts */,
 				26738D7B2C182569008DF0BC /* ModalPresenter.swift */,
 				26738D7F2C182A9E008DF0BC /* Colors.swift */,
 				26738D812C182B5E008DF0BC /* UIColor+Extension.swift */,
+				26738D9A2C18407D008DF0BC /* UIFont+Extension.swift */,
 			);
 			path = UILibrary;
+			sourceTree = "<group>";
+		};
+		26738D832C183EDB008DF0BC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				26738D842C183EF1008DF0BC /* Manrope */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		26738D842C183EF1008DF0BC /* Manrope */ = {
+			isa = PBXGroup;
+			children = (
+				26738D852C183EF1008DF0BC /* Manrope-VariableFont_wght.ttf */,
+				26738D862C183EF1008DF0BC /* static */,
+				26738D8E2C183EF1008DF0BC /* OFL.txt */,
+				26738D8F2C183EF1008DF0BC /* README.txt */,
+			);
+			path = Manrope;
+			sourceTree = "<group>";
+		};
+		26738D862C183EF1008DF0BC /* static */ = {
+			isa = PBXGroup;
+			children = (
+				26738D872C183EF1008DF0BC /* Manrope-Medium.ttf */,
+				26738D882C183EF1008DF0BC /* Manrope-SemiBold.ttf */,
+				26738D892C183EF1008DF0BC /* Manrope-ExtraBold.ttf */,
+				26738D8A2C183EF1008DF0BC /* Manrope-Regular.ttf */,
+				26738D8B2C183EF1008DF0BC /* Manrope-ExtraLight.ttf */,
+				26738D8C2C183EF1008DF0BC /* Manrope-Light.ttf */,
+				26738D8D2C183EF1008DF0BC /* Manrope-Bold.ttf */,
+			);
+			path = static;
 			sourceTree = "<group>";
 		};
 		63EF720736E10A8CA080A952 /* Frameworks */ = {
@@ -235,8 +292,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26738D922C183EF1008DF0BC /* Manrope-SemiBold.ttf in Resources */,
+				26738D982C183EF1008DF0BC /* OFL.txt in Resources */,
 				C3326B2A2BFFA01200234D26 /* LaunchScreen.storyboard in Resources */,
 				C3326B272BFFA01200234D26 /* Assets.xcassets in Resources */,
+				26738D932C183EF1008DF0BC /* Manrope-ExtraBold.ttf in Resources */,
+				26738D912C183EF1008DF0BC /* Manrope-Medium.ttf in Resources */,
+				26738D952C183EF1008DF0BC /* Manrope-ExtraLight.ttf in Resources */,
+				26738D972C183EF1008DF0BC /* Manrope-Bold.ttf in Resources */,
+				26738D902C183EF1008DF0BC /* Manrope-VariableFont_wght.ttf in Resources */,
+				26738D962C183EF1008DF0BC /* Manrope-Light.ttf in Resources */,
+				26738D992C183EF1008DF0BC /* README.txt in Resources */,
+				26738D942C183EF1008DF0BC /* Manrope-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26738D9B2C18407D008DF0BC /* UIFont+Extension.swift in Sources */,
 				C3326B222BFFA00F00234D26 /* MapViewController.swift in Sources */,
 				26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */,
 				C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */,
