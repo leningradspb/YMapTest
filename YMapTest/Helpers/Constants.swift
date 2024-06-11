@@ -15,6 +15,8 @@ struct Constants {
         static let commonHorizontal: CGFloat = 24
         /// 24
         static let extraVertical: CGFloat = 24
+        /// 44
+        static let bottomPadding: CGFloat = 44
         /// 16
         static let commonVertical: CGFloat = 16
         /// 50

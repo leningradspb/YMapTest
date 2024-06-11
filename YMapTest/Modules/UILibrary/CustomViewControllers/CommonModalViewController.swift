@@ -39,7 +39,7 @@ public class CommonModalViewController: UIViewController {
             $0.top.equalToSuperview().offset(Constants.Layout.extraVertical)
             $0.leading.equalToSuperview().offset(Constants.Layout.commonHorizontal)
             $0.trailing.equalToSuperview().offset(-Constants.Layout.commonHorizontal)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Constants.Layout.extraVertical)
+            $0.bottom.equalToSuperview().offset(-Constants.Layout.bottomPadding)
         }
         
         mainStack.addArranged(subviews: [labelsStack, buttonsStack])
