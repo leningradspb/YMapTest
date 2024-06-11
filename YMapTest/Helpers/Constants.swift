@@ -29,8 +29,8 @@ struct Constants {
         static let buttonCornerRadius: CGFloat = 32
         /// 14
         static let primaryButtonIconValue: CGFloat = 14
-        /// 4
-        static let primaryButtonXIconOffset: CGFloat = 4
+        /// 12
+        static let primaryButtonXIconOffset: CGFloat = 12
     }
     
     struct YMakpKit {

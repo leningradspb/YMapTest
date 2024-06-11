@@ -31,8 +31,6 @@ public class PrimaryButton: UIView {
         textLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
-//            $0.leading.greaterThanOrEqualToSuperview().offset(Constants.Layout.commonHorizontal)
-//            $0.trailing.lessThanOrEqualToSuperview().offset(-Constants.Layout.commonHorizontal)
         }
         backgroundColor = .primaryButtonBackgroundColor
         textLabel.textColor = .primaryButtonTintColor
