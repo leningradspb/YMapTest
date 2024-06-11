@@ -115,7 +115,7 @@ final class MapViewController: UIViewController {
 //            self.showFPC(vc: vc)
 //            self.presentFPC(contentVC: vc)
 //            ModalPresenter.shared.presentModalController(contentVC: vc)
-            let model = CommonModalViewController.Model(title: "Точно хотите отменить заказ?", subtitle: "Если сейчас отменить, поиск новой машины может быть дольше", primaryButtonText: nil, secondaryButtonText: nil, textAlignment: .center)
+            let model = CommonModalViewController.Model(title: "Точно хотите отменить заказ?", subtitle: "Если сейчас отменить, поиск новой машины может быть дольше", primaryButtonText: "Не отменять", secondaryButtonText: nil, textAlignment: .center)
             let vc = CommonModalViewController(model: model)
             ModalPresenter.shared.presentModalController(contentVC: vc)
 //            Router.bottomSheet.present(vc)

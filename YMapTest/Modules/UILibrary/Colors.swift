@@ -32,6 +32,32 @@ public extension UIColor {
         }
     }()
     
+    /// Основной цвет кнопки (темная тема = белый, светлая - черный)
+    static var primaryButtonBackgroundColor: UIColor = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                /// Return the color for Dark Mode
+                return .mainWhite
+            } else {
+                /// Return the color for Light Mode
+                return .mainBlack
+            }
+        }
+    }()
+    
+    /// Tint цвет кнопки (темная тема = черный , светлая - белый)
+    static var primaryButtonTintColor: UIColor = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                /// Return the color for Dark Mode
+                return .mainBlack
+            } else {
+                /// Return the color for Light Mode
+                return .mainWhite
+            }
+        }
+    }()
+    
     /// Цвет фона за модалкой (черная тема - без цвета, светлая тема - черный с альфа 60%)
     static var modalBackViewColor: UIColor = {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in

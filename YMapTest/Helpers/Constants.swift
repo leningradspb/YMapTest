@@ -23,6 +23,10 @@ struct Constants {
         static let mapButtonsStackCenterYOffset: CGFloat = -30
         /// 12
         static let mapButtonsStackSpacing: CGFloat = 12
+        /// 64
+        static let buttonHeight: CGFloat = 64
+        /// 32
+        static let buttonCornerRadius: CGFloat = 32
     }
     
     struct YMakpKit {

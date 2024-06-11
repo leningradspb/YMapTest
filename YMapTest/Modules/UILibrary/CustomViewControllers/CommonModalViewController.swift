@@ -13,6 +13,7 @@ public class CommonModalViewController: UIViewController {
     private let buttonsStack = VerticalStackView(spacing: 20)
     private let titleLabel = TitleLabel()
     private let subtitleLabel = SubtitleLabel()
+    private let primaryButton = PrimaryButton()
 
     private let model: Model
     public init(model: Model) {
@@ -26,6 +27,11 @@ public class CommonModalViewController: UIViewController {
     }
     
     private func setupUI() {
+        setupConstraints()
+        setupContent()
+    }
+    
+    private func setupConstraints() {
         view.addSubview(mainStack)
         mainStack.snp.makeConstraints {
             $0.top.equalToSuperview().offset(Constants.Layout.extraVertical)
@@ -35,7 +41,11 @@ public class CommonModalViewController: UIViewController {
         }
         
         mainStack.addArranged(subviews: [labelsStack, buttonsStack])
-        
+        labelsStack.addArranged(subviews: [titleLabel, subtitleLabel])
+        buttonsStack.addArranged(subviews: [primaryButton])
+    }
+    
+    private func setupContent() {
         let title = model.title
         let subtitle = model.subtitle
         let primaryButtonText = model.primaryButtonText
@@ -50,7 +60,10 @@ public class CommonModalViewController: UIViewController {
             buttonsStack.isHidden = true
         }
         
-        labelsStack.addArranged(subviews: [titleLabel, subtitleLabel])
+        titleLabel.isHidden = title == nil
+        subtitleLabel.isHidden = subtitle == nil
+        primaryButton.isHidden = primaryButtonText == nil
+        
         titleLabel.text = title
         subtitleLabel.text = subtitle
         
@@ -58,8 +71,9 @@ public class CommonModalViewController: UIViewController {
             titleLabel.textAlignment = textAlignment
             subtitleLabel.textAlignment = textAlignment
         }
+        
+        primaryButton.text = primaryButtonText
     }
-    
 }
 
 public extension CommonModalViewController {
