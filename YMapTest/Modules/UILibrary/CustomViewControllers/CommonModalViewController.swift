@@ -34,6 +34,7 @@ public class CommonModalViewController: UIViewController {
     
     private func setupConstraints() {
         view.addSubview(mainStack)
+        view.backgroundColor = .primaryColor
         mainStack.snp.makeConstraints {
             $0.top.equalToSuperview().offset(Constants.Layout.extraVertical)
             $0.leading.equalToSuperview().offset(Constants.Layout.commonHorizontal)
