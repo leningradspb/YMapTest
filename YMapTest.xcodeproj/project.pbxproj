@@ -28,6 +28,7 @@
 		26738DA52C186254008DF0BC /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738DA42C186254008DF0BC /* CustomLabel.swift */; };
 		26738DA72C186463008DF0BC /* SubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738DA62C186463008DF0BC /* SubtitleLabel.swift */; };
 		26738DAC2C186B14008DF0BC /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738DAB2C186B14008DF0BC /* PrimaryButton.swift */; };
+		26738DAE2C187A70008DF0BC /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738DAD2C187A70008DF0BC /* SecondaryButton.swift */; };
 		26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4715B2C16DAFB0046ABEE /* StackViews.swift */; };
 		C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1D2BFFA00F00234D26 /* AppDelegate.swift */; };
 		C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1F2BFFA00F00234D26 /* SceneDelegate.swift */; };
@@ -63,6 +64,7 @@
 		26738DA42C186254008DF0BC /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		26738DA62C186463008DF0BC /* SubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleLabel.swift; sourceTree = "<group>"; };
 		26738DAB2C186B14008DF0BC /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		26738DAD2C187A70008DF0BC /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		26C4715B2C16DAFB0046ABEE /* StackViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViews.swift; sourceTree = "<group>"; };
 		454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YMapTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B782188053772D412CD573E /* Pods-YMapTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.release.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				26738DAB2C186B14008DF0BC /* PrimaryButton.swift */,
+				26738DAD2C187A70008DF0BC /* SecondaryButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				26738D9B2C18407D008DF0BC /* UIFont+Extension.swift in Sources */,
 				26738DA52C186254008DF0BC /* CustomLabel.swift in Sources */,
 				26738DAC2C186B14008DF0BC /* PrimaryButton.swift in Sources */,
+				26738DAE2C187A70008DF0BC /* SecondaryButton.swift in Sources */,
 				C3326B222BFFA00F00234D26 /* MapViewController.swift in Sources */,
 				26738DA12C1860B5008DF0BC /* UIView+Extension.swift in Sources */,
 				26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */,

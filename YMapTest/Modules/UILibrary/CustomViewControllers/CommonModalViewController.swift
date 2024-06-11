@@ -14,6 +14,7 @@ public class CommonModalViewController: UIViewController {
     private let titleLabel = TitleLabel()
     private let subtitleLabel = SubtitleLabel()
     private let primaryButton = PrimaryButton()
+    private let secondaryButton = SecondaryButton()
 
     private let model: Model
     public init(model: Model) {
@@ -45,7 +46,7 @@ public class CommonModalViewController: UIViewController {
         let v = UIView()
         v.backgroundColor = .clear
         labelsStack.addArranged(subviews: [titleLabel, subtitleLabel, v])
-        buttonsStack.addArranged(subviews: [primaryButton])
+        buttonsStack.addArranged(subviews: [secondaryButton, primaryButton])
     }
     
     private func setupContent() {
@@ -66,6 +67,7 @@ public class CommonModalViewController: UIViewController {
         titleLabel.isHidden = title == nil
         subtitleLabel.isHidden = subtitle == nil
         primaryButton.isHidden = primaryButtonText == nil
+        secondaryButton.isHidden = secondaryButtonText == nil
         
         titleLabel.text = title
         subtitleLabel.text = subtitle
@@ -76,6 +78,7 @@ public class CommonModalViewController: UIViewController {
         }
         
         primaryButton.text = primaryButtonText
+        secondaryButton.text = secondaryButtonText
     }
 }
 
