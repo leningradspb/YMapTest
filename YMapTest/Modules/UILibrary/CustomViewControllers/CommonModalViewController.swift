@@ -43,9 +43,6 @@ public class CommonModalViewController: UIViewController {
         }
         
         mainStack.addArranged(subviews: [labelsStack, buttonsStack])
-        /// костыль чтобы лейблы не растягивались больше собственного размера
-        let v = UIView()
-        v.backgroundColor = .clear
         labelsStack.addArranged(subviews: [titleLabel, subtitleLabel])
         buttonsStack.addArranged(subviews: [secondaryButton, primaryButton])
     }

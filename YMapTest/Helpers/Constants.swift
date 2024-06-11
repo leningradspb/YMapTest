@@ -27,6 +27,10 @@ struct Constants {
         static let buttonHeight: CGFloat = 64
         /// 32
         static let buttonCornerRadius: CGFloat = 32
+        /// 14
+        static let primaryButtonIconValue: CGFloat = 14
+        /// 4
+        static let primaryButtonXIconOffset: CGFloat = 4
     }
     
     struct YMakpKit {
@@ -49,6 +53,8 @@ struct Constants {
         static let zoomOutLight = "zoom_out_light"
         static let userLocationIcon = "user_location_icon"
         static let locationPinLight = "location_pin_light"
+        static let primaryButtonNavigateIcon = "primary_button_navigate_icon"
+        static let primaryButtonXIcon = "primary_button_x_icon"
     }
     
     enum MapButtons: CaseIterable {
