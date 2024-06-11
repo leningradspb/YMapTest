@@ -76,7 +76,7 @@ public extension UIColor {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
             if UITraitCollection.userInterfaceStyle == .dark {
                 /// Return the color for Dark Mode
-                return .mainWhite
+                return .red
             } else {
                 /// Return the color for Light Mode
                 return .mainBlack

@@ -27,6 +27,14 @@ public class SecondaryButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        let traitCollection = self.traitCollection
+        let borderColor = UIColor.secondaryButtonTintColor.resolvedColor(with: traitCollection).cgColor
+        layer.borderColor = borderColor
+    }
+    
     private func setupUI(text: String) {
         backgroundColor = .secondaryButtonBackgroundColor
         titleLabel?.font = .appFont(weight: .medium, size: 16)
@@ -43,8 +51,6 @@ public class SecondaryButton: UIButton {
         
         layer.cornerRadius = Constants.Layout.buttonCornerRadius
         layer.borderWidth = 1
-        /// secondaryButtonTintColor - не работает. Видимо потому что cgColor
-        layer.borderColor = UIColor.black.cgColor
         clipsToBounds = true
     }
 }
