@@ -27,7 +27,7 @@ public class ModalPresenter {
     
     private init() {}
     
-    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, state: ModalState = .intrinsic) {
+    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = false, isHideByTapGesture: Bool = true) {
         fpc = FloatingPanelController()
         
         switch state {
@@ -39,14 +39,30 @@ public class ModalPresenter {
             fpc.layout = IntrinsicPanelLayout()
         }
         
-        
-        // Assign self as the delegate of the controller.
         fpc.delegate = self // Optional
+        fpc.backdropView.backgroundColor = .modalBackViewColor
+        fpc.surfaceView.appearance.cornerRadius = ModalPresenter.Constants.surfaceViewCornerRadius
+        fpc.surfaceView.grabberHandle.isHidden = isGrabberHandleHidden
         fpc.set(contentViewController: contentVC)
+        
+        /// скрывать по нажатию на заднее вью
+        if isHideByTapGesture {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleBackdropTap))
+            fpc.backdropView.addGestureRecognizer(tapGesture)
+        }
 
         fpc.isRemovalInteractionEnabled = isRemovalInteractionEnabled // Optional: Let it removable by a swipe-down
 
-        rootVC?.present(fpc, animated: true, completion: nil)
+//        rootVC?.present(fpc, animated: true, completion: nil)
+        if let rootVC {
+            fpc.addPanel(toParent: rootVC)
+        } else {
+            print("Нет rootVC в presentModalController")
+        }
+    }
+
+    @objc private func handleBackdropTap() {
+        fpc?.removePanelFromParent(animated: true)
     }
 }
 public extension ModalPresenter {
@@ -77,5 +93,11 @@ public extension ModalPresenter {
     enum ModalState {
         case full, intrinsic
         case custom(value: CGFloat)
+    }
+}
+
+private extension ModalPresenter {
+    struct Constants {
+        static let surfaceViewCornerRadius: CGFloat = 24
     }
 }

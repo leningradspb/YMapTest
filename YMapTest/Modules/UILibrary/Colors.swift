@@ -20,6 +20,19 @@ public extension UIColor {
             }
         }
     }()
+    
+    /// Цвет фона за модалкой (черная тема - без цвета, светлая тема - черный с альфа 60%)
+    static var modalBackViewColor: UIColor = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                /// Return the color for Dark Mode
+                return .modalBackViewDarkModeColor
+            } else {
+                /// Return the color for Light Mode
+                return .modalBackViewLightModeColor
+            }
+        }
+    }()
 }
 
 private extension UIColor {
@@ -28,4 +41,9 @@ private extension UIColor {
     
     /// #FFFFFF
     static let mainWhite = UIColor(hex: "#FFFFFF")
+    
+    /// clear
+    static let modalBackViewDarkModeColor = UIColor.clear
+    /// #070707 with alpha 0.6
+    static let modalBackViewLightModeColor = UIColor(hex: "#070707").withAlphaComponent(0.6)
 }

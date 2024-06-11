@@ -85,7 +85,7 @@ final class MapViewController: UIViewController {
         }
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
 //            self.addPlaceMark(latitude: 59.961075, longitude: 30.260612)
             let vc = UIViewController()
             let rect = UIView()
@@ -99,15 +99,15 @@ final class MapViewController: UIViewController {
                 $0.bottom.equalToSuperview().offset(-100)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-//                vc.overrideUserInterfaceStyle = .light
-                UIApplication.shared.windows.first!.overrideUserInterfaceStyle = .light
-            })
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+////                vc.overrideUserInterfaceStyle = .light
+//                UIApplication.shared.windows.first!.overrideUserInterfaceStyle = .light
+//            })
             
 //            self.showFPC(vc: vc)
 //            self.presentFPC(contentVC: vc)
 //            ModalPresenter.shared.presentModalController(contentVC: vc)
-            ModalPresenter.shared.presentModalController(contentVC: vc, state: .full)
+            ModalPresenter.shared.presentModalController(contentVC: vc)
 //            Router.bottomSheet.present(vc)
         })
     }
