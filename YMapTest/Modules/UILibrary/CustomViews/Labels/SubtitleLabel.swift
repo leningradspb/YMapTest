@@ -15,6 +15,7 @@ public class SubtitleLabel: UILabel {
         self.textColor = .textColor
         self.font = .appFont(weight: .regular, size: 14)
         self.textAlignment = textAlignment
+        self.lineBreakMode = .byWordWrapping
     }
     
     required init?(coder: NSCoder) {

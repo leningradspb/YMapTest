@@ -8,7 +8,7 @@
 import UIKit
 
 public class CommonModalViewController: UIViewController {
-    private let mainStack = VerticalStackView(spacing: 24)
+    private let mainStack = VerticalStackView(spacing: 0)
     private let labelsStack = VerticalStackView(spacing: 8)
     private let buttonsStack = VerticalStackView(spacing: 20)
     private let titleLabel = TitleLabel()
@@ -41,7 +41,10 @@ public class CommonModalViewController: UIViewController {
         }
         
         mainStack.addArranged(subviews: [labelsStack, buttonsStack])
-        labelsStack.addArranged(subviews: [titleLabel, subtitleLabel])
+        /// костыль чтобы лейблы не растягивались больше собственного размера
+        let v = UIView()
+        v.backgroundColor = .clear
+        labelsStack.addArranged(subviews: [titleLabel, subtitleLabel, v])
         buttonsStack.addArranged(subviews: [primaryButton])
     }
     

@@ -10,13 +10,14 @@ import UIKit
 public class TitleLabel: UILabel {
     public init(text: String = "", numberOfLines: Int = 0, textAlignment: NSTextAlignment = .left) {
         super.init(frame: .zero)
-        self.text = text
         self.numberOfLines = numberOfLines
         self.textColor = .textColor
         self.font = .appFont(weight: .medium, size: 18)
         self.textAlignment = textAlignment
         self.setContentHuggingPriority(.required, for: .vertical)
         self.setContentHuggingPriority(.required, for: .horizontal)
+        self.lineBreakMode = .byWordWrapping
+        self.text = text
     }
     
     required init?(coder: NSCoder) {
