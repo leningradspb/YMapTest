@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1645D1D3FABC2B2A481BB033 /* Pods_YMapTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */; };
 		26738D7C2C182569008DF0BC /* ModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D7B2C182569008DF0BC /* ModalPresenter.swift */; };
+		26738D802C182A9E008DF0BC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D7F2C182A9E008DF0BC /* Colors.swift */; };
+		26738D822C182B5E008DF0BC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D812C182B5E008DF0BC /* UIColor+Extension.swift */; };
 		26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4715B2C16DAFB0046ABEE /* StackViews.swift */; };
 		C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1D2BFFA00F00234D26 /* AppDelegate.swift */; };
 		C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1F2BFFA00F00234D26 /* SceneDelegate.swift */; };
@@ -25,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		26738D7B2C182569008DF0BC /* ModalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
+		26738D7F2C182A9E008DF0BC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		26738D812C182B5E008DF0BC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		26C4715B2C16DAFB0046ABEE /* StackViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViews.swift; sourceTree = "<group>"; };
 		454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YMapTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B782188053772D412CD573E /* Pods-YMapTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.release.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				26738D7B2C182569008DF0BC /* ModalPresenter.swift */,
+				26738D7F2C182A9E008DF0BC /* Colors.swift */,
+				26738D812C182B5E008DF0BC /* UIColor+Extension.swift */,
 			);
 			path = UILibrary;
 			sourceTree = "<group>";
@@ -306,7 +312,9 @@
 				C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */,
 				26738D7C2C182569008DF0BC /* ModalPresenter.swift in Sources */,
 				C39A22282BFFB33600F1E6D7 /* Extensions.swift in Sources */,
+				26738D822C182B5E008DF0BC /* UIColor+Extension.swift in Sources */,
 				C3326B322BFFA39600234D26 /* Constants.swift in Sources */,
+				26738D802C182A9E008DF0BC /* Colors.swift in Sources */,
 				C39A22212BFFB11300F1E6D7 /* NotificationBanner.swift in Sources */,
 				C39A22262BFFB16C00F1E6D7 /* NotificationBannerStyle.swift in Sources */,
 				C39A222B2BFFB80400F1E6D7 /* LocationService.swift in Sources */,

@@ -89,7 +89,7 @@ final class MapViewController: UIViewController {
 //            self.addPlaceMark(latitude: 59.961075, longitude: 30.260612)
             let vc = UIViewController()
             let rect = UIView()
-            rect.backgroundColor = .red
+            rect.backgroundColor = .primaryColor
             vc.view.addSubview(rect)
             
             rect.snp.makeConstraints {
@@ -98,6 +98,11 @@ final class MapViewController: UIViewController {
                 $0.centerX.equalToSuperview()
                 $0.bottom.equalToSuperview().offset(-100)
             }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+//                vc.overrideUserInterfaceStyle = .light
+                UIApplication.shared.windows.first!.overrideUserInterfaceStyle = .light
+            })
             
 //            self.showFPC(vc: vc)
 //            self.presentFPC(contentVC: vc)
