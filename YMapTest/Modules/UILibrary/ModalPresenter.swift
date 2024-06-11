@@ -56,6 +56,8 @@ public class ModalPresenter {
 //        rootVC?.present(fpc, animated: true, completion: nil)
         if let rootVC {
             fpc.addPanel(toParent: rootVC)
+            fpc.surfaceView.layoutIfNeeded()
+            fpc.surfaceView.invalidateIntrinsicContentSize()
         } else {
             print("Нет rootVC в presentModalController")
         }
@@ -70,7 +72,7 @@ public extension ModalPresenter {
         public override var initialState: FloatingPanelState { .full }
         public override var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
             return [
-                .full: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.0, referenceGuide: .safeArea)
+                .full: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.0, referenceGuide: .superview)
             ]
         }
     }
@@ -79,7 +81,7 @@ public extension ModalPresenter {
         public let position: FloatingPanelPosition = .bottom
         public let initialState: FloatingPanelState = .full
         public let anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] = [
-               .full: FloatingPanelLayoutAnchor(absoluteInset: 40, edge: .top, referenceGuide: .safeArea)
+               .full: FloatingPanelLayoutAnchor(absoluteInset: 40, edge: .top, referenceGuide: .superview)
            ]
        }
 }
