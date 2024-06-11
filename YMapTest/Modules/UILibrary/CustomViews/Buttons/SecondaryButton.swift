@@ -5,16 +5,15 @@
 //  Created by Eduard Kanevskii on 11.06.2024.
 //
 
-import Foundation
 import UIKit
 
-public class SecondaryButton: UIButton {
+public class SecondaryButton: UIView {
+    
+    private let textLabel = UILabel()
     
     public var text: String? {
         didSet {
-            setTitle(text, for: .normal)
-            setTitle(text, for: .selected)
-            setTitle(text, for: .highlighted)
+            textLabel.text = text
         }
     }
     
@@ -37,13 +36,16 @@ public class SecondaryButton: UIButton {
     
     private func setupUI(text: String) {
         backgroundColor = .secondaryButtonBackgroundColor
-        titleLabel?.font = .appFont(weight: .medium, size: 16)
-        setTitle(text, for: .normal)
-        setTitle(text, for: .selected)
-        setTitle(text, for: .highlighted)
-        setTitleColor(.secondaryButtonTintColor, for: .normal)
-        setTitleColor(.secondaryButtonTintColor, for: .selected)
-        setTitleColor(.secondaryButtonTintColor, for: .highlighted)
+        addSubview(textLabel)
+        textLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.leading.greaterThanOrEqualToSuperview().offset(Constants.Layout.commonHorizontal)
+            $0.trailing.lessThanOrEqualToSuperview().offset(-Constants.Layout.commonHorizontal)
+        }
+        backgroundColor = .secondaryButtonBackgroundColor
+        textLabel.textColor = .secondaryButtonTintColor
+        textLabel.font = .appFont(weight: .medium, size: 16)
         
         self.snp.makeConstraints {
             $0.height.equalTo(Constants.Layout.buttonHeight)

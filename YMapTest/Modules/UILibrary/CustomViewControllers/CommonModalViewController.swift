@@ -85,6 +85,12 @@ public class CommonModalViewController: UIViewController {
             guard let self = self else { return }
             print("Primary button action")
         }
+        
+        secondaryButton.addActionOnTap { [weak self] in
+            guard let self = self else { return }
+            print("secondaryButton button action")
+            self.dismiss(animated: true)
+        }
     }
 }
 
