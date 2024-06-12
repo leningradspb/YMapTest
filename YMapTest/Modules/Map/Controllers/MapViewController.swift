@@ -69,6 +69,9 @@ final class MapViewController: UIViewController {
     /// 59.961075, 30.260612
     let userLocation = CLLocation(latitude: 59.961075, longitude: 30.260612)
     private var currentZoom: Float = Constants.YMakpKit.zoom
+    private var isInitialMapZoomFinished: Bool = false
+    
+    private let startModalOnMap = StartModalOnMapVC()
     
     
     
@@ -115,8 +118,8 @@ final class MapViewController: UIViewController {
 //            let model = CommonModalViewController.Model(title: "Точно хотите отменить заказ?", subtitle: "Если сейчас отменить, поиск новой машины может быть дольше", primaryButtonText: "Не отменять", secondaryButtonText: "Отменить заказ", textAlignment: .center)
 //            let vc = CommonModalViewController(model: model)
             
-            let vc = StartModalOnMapVC()
-            ModalPresenter.shared.presentModalController(contentVC: vc, state: .intrinsicAndTip(tipFractionalOffset: 120), surfaceViewBackgroundColor: .clear)
+            
+            ModalPresenter.shared.presentModalController(contentVC: self.startModalOnMap, state: .intrinsicAndTip(tipFractionalOffset: 130), surfaceViewBackgroundColor: .clear)
 //            ModalPresenter.shared.presentModalController(contentVC: vc, isBackdropViewHidden: false)
 //            Router.bottomSheet.present(vc)
         })
@@ -320,7 +323,14 @@ final class MapViewController: UIViewController {
                         tilt: Constants.YMakpKit.tilt
                     ),
                     animation: YMKAnimation(type: YMKAnimationType.smooth, duration: Constants.YMakpKit.duration),
-                    cameraCallback: nil)
+                    cameraCallback: { [weak self] finished in
+                        guard let self = self else { return }
+                        print("finished", finished)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute:  {
+                            self.isInitialMapZoomFinished = true
+                        })
+                        
+                    })
         }
         
 //        let endLocationLatitude = endLocation.coordinate.latitude
@@ -475,6 +485,18 @@ final class MapViewController: UIViewController {
 //        userLocationPinPlacemark = viewStartPlacemark
     }
     
+    private func changeModalStateToTip() {
+        if ModalPresenter.shared.currentState != .tip {
+            ModalPresenter.shared.changeModalState(state: .tip)
+        }
+    }
+    
+    private func changeModalStateToFull() {
+        if ModalPresenter.shared.currentState != .full {
+            ModalPresenter.shared.changeModalState(state: .full)
+        }
+    }
+    
     private func drivingRouteHandler(drivingRoutes: [YMKDrivingRoute]?, error: Error?) {
         if let error {
             // Handle request routes error
@@ -609,7 +631,9 @@ extension MapViewController: YMKMapCameraListener {
     func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
 //        print(cameraPosition.target.latitude, cameraPosition.target.longitude, finished)
         movePinOnMap(by: cameraPosition.target, finished: finished)
-        
+        if ModalPresenter.shared.isPresentingNow, isInitialMapZoomFinished {
+            changeModalStateToTip()
+        }
         
 //        if finished {
 //            searchSession = searchManager.submit(with: cameraPosition.target, zoom: NSNumber(floatLiteral: Double(cameraPosition.zoom)), searchOptions: .init(searchTypes: .geo, resultPageSize: 10, snippets: [], userPosition: userLocationDotPlacemark?.geometry, origin: nil, geometry: true, disableSpellingCorrection: true, filters: nil), responseHandler: {

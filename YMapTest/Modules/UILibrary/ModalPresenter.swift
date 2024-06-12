@@ -12,6 +12,10 @@ import FloatingPanel
 public class ModalPresenter {
     public static let shared = ModalPresenter()
     public var fpc: FloatingPanelController!
+    public var isPresentingNow: Bool = false
+    public var currentState: FloatingPanelState {
+        fpc.state
+    }
     /// для ограничения чрезмерного поднятия модалки вверх
     private var isLongTopSwipeRestricted: Bool = true
     /// для ограничения чрезмерного поднятия модалки вверх
@@ -72,10 +76,22 @@ public class ModalPresenter {
 //        rootVC?.present(fpc, animated: true, completion: nil)
         if let rootVC {
             fpc.addPanel(toParent: rootVC)
-            fpc.surfaceView.layoutIfNeeded()
-            fpc.surfaceView.invalidateIntrinsicContentSize()
+            isPresentingNow = true
+            if isLongTopSwipeRestricted {
+                if initialSurfaceScrollViewOffsetY == nil {
+                    initialSurfaceScrollViewOffsetY = fpc.surfaceLocation.y
+                }
+            }
+//            fpc.surfaceView.layoutIfNeeded()
+//            fpc.surfaceView.invalidateIntrinsicContentSize()
         } else {
             print("Нет rootVC в presentModalController")
+        }
+    }
+    
+    public func changeModalState(state: FloatingPanelState) {
+        if let fpc, isPresentingNow {
+            fpc.move(to: state, animated: true)
         }
     }
 
@@ -144,7 +160,10 @@ extension ModalPresenter: FloatingPanelControllerDelegate {
                 fpc.surfaceLocation = CGPoint(x: loc.x, y: initialSurfaceScrollViewOffsetY - availableScrollToTopYOffset)
             }
         }
-        
+    }
+    
+    public func floatingPanelDidRemove(_ fpc: FloatingPanelController) {
+        isPresentingNow = false
     }
 }
 
