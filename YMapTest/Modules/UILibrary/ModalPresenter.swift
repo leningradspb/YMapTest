@@ -22,6 +22,8 @@ public class ModalPresenter {
     private var initialSurfaceScrollViewOffsetY: CGFloat?
     /// для ограничения чрезмерного поднятия модалки вверх
     private let availableScrollToTopYOffset: CGFloat = 60
+    /// устанавливается в present, только для get использвания
+    private var modalState: ModalState = .full
     
     private lazy var rootVC: UIViewController? = {
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
@@ -39,7 +41,7 @@ public class ModalPresenter {
     
     public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, isBackdropViewHidden: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true, surfaceViewBackgroundColor: UIColor = .primaryColor, isLongTopSwipeRestricted: Bool = true, addWithAnimation: Bool = false) {
         fpc = FloatingPanelController()
-        
+        self.modalState = state
         fpc.isRemovalInteractionEnabled = isRemovalInteractionEnabled
         switch state {
         case .intrinsic:
@@ -153,6 +155,20 @@ extension ModalPresenter: FloatingPanelControllerDelegate {
     }
     
     public func floatingPanelDidMove(_ fpc: FloatingPanelController) {
+        
+        switch modalState {
+        case .full:
+            let loc = fpc.surfaceLocation
+                  let currentY = loc.y
+            // TODO: сделать умнее. отвечает за свайп вниз. если офсет больше 220, то сворачивает модалку
+            if currentY > 220 {
+                fpc.removePanelFromParent(animated: true)
+            }
+            return
+        default:
+            break
+        }
+        
         if isLongTopSwipeRestricted, let initialSurfaceScrollViewOffsetY {
             let loc = fpc.surfaceLocation
             let currentY = loc.y
