@@ -46,6 +46,7 @@ public class SecondaryButton: UIView {
         backgroundColor = .secondaryButtonBackgroundColor
         textLabel.textColor = .secondaryButtonTintColor
         textLabel.font = .appFont(weight: .medium, size: 16)
+        textLabel.text = text
         
         self.snp.makeConstraints {
             $0.height.equalTo(Constants.Layout.buttonHeight)

@@ -8,22 +8,30 @@
 import UIKit
 
 final class StartModalOnMapVC: UIViewController {
-    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    fileprivate typealias DataSource = UICollectionViewDiffableDataSource<Section, String>
-    fileprivate typealias Snapshot = NSDiffableDataSourceSnapshot<Section, String>
-    private lazy var dataSource = makeDataSource()
+    private let collectionView = IntrinsicCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()) // UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     // локализаций еще не было, поэтому хардкод
     private let whereToGoButton = PrimaryButton(text: "Куда едем?", isNavigateIcon: true)
     
     private var lastAddresses = StartModalOnMapModel.mocks
+    /// 8
+    private let lastAddressCellPadding: CGFloat = 8
+    /// 16
+    private let minimumLineSpacingForSection : CGFloat = 16
+    /// 98
+    private let lastAddressCellHeight: CGFloat = 98
+    /// 2
+    private let cellsPerWidthCount: CGFloat = 2
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupUI()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        print(collectionView.intrinsicContentSize.height)
+        collectionView.reloadData()
     }
     
     private func setupUI() {
@@ -45,61 +53,61 @@ final class StartModalOnMapVC: UIViewController {
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints {
+//            $0.top.equalToSuperview().offset(100)
             $0.top.equalTo(whereToGoButton.snp.bottom).offset(Constants.Layout.mediumVertical)
             $0.leading.equalToSuperview().offset(Constants.Layout.commonHorizontal)
             $0.trailing.equalToSuperview().offset(-Constants.Layout.commonHorizontal)
-            $0.bottom.equalToSuperview()
+//            $0.height.equalTo(110)
+            $0.bottom.equalToSuperview().offset(-Constants.Layout.bottomPadding)
         }
         
         collectionView.register(LastAddressGridCell.self, forCellWithReuseIdentifier: LastAddressGridCell.identifier)
-        collectionView.collectionViewLayout = makeCollectionViewLayout()
         collectionView.delegate = self
-        collectionView.dataSource = self.dataSource
-        applySnapshot()
-        collectionView.reloadData()
-    }
-    
-    private func makeCollectionViewLayout() -> UICollectionViewLayout {
-        let layoutSize: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1),
-                                                       heightDimension: .absolute(152))
-        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize,
-                                                       subitem: item,
-                                                       count: 1)
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 16
-        section.contentInsets = .init(top: 24, leading: 16, bottom: 16, trailing: 16)
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
-    
-    private func makeDataSource() -> DataSource {
-        DataSource(collectionView: collectionView) { [weak self] collectionView, indexPath, id in
-            guard let self = self,
-                  let model = self.lastAddresses[safe: indexPath.row] else { return UICollectionViewCell() }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LastAddressGridCell.identifier, for: indexPath) as! LastAddressGridCell
-            cell.update(with: model)
-            
-            return cell
+        collectionView.dataSource = self
+//        collectionView.collectionViewLayout = makeCollectionViewLayout()
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .vertical
+//            flowLayout.estimatedItemSize = CGSize(width: 375, height: 200)
         }
-    }
-    
-    private func applySnapshot() {
-        var snapshot = Snapshot()
-        snapshot.appendSections([.main])
-        let safe = lastAddresses.compactMap { $0.id }.uniqueElements
-        snapshot.appendItems(safe, toSection: .main)
-        DispatchQueue.main.async {
-            self.dataSource.apply(snapshot)
-        }
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.isScrollEnabled = false
+//        collectionView.contentInset.bottom =
+//        collectionView.invalidateIntrinsicContentSize()
+//        collectionView.reloadData()
     }
 }
 
-extension StartModalOnMapVC: UICollectionViewDelegate {
+extension StartModalOnMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        lastAddresses.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LastAddressGridCell.identifier, for: indexPath) as? LastAddressGridCell, let model = lastAddresses[safe: indexPath.row] else { return UICollectionViewCell() }
+        
+        cell.update(with: model)
+        return cell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        collectionView.deselectItem(at: indexPath, animated: true)
         print("didSelectItemAt \(indexPath.row)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        /// отступ в констрейнтах
+        let collectionViewPadding = Constants.Layout.commonHorizontal
+        let width = (view.bounds.width / cellsPerWidthCount) - collectionViewPadding - lastAddressCellPadding
+        let size = CGSize(width: width, height: lastAddressCellHeight)
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return minimumLineSpacingForSection
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return lastAddressCellPadding
     }
 }
 

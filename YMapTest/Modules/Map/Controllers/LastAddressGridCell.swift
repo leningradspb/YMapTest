@@ -11,5 +11,6 @@ final class LastAddressGridCell: UICollectionViewCell {
     
     func update(with model: StartModalOnMapVC.StartModalOnMapModel) {
         print(model.address)
+        contentView.backgroundColor = .yellow
     }
 }

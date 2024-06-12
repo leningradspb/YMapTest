@@ -11,6 +11,8 @@
 		264AC2CC2C196CA9004E83E0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AC2CB2C196CA8004E83E0 /* GradientView.swift */; };
 		264AC2CE2C196DE3004E83E0 /* StartModalOnMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AC2CD2C196DE3004E83E0 /* StartModalOnMapVC.swift */; };
 		264AC2D02C197308004E83E0 /* LastAddressGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AC2CF2C197308004E83E0 /* LastAddressGridCell.swift */; };
+		264AC2D32C197C01004E83E0 /* IntrinsicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AC2D12C197C01004E83E0 /* IntrinsicCollectionView.swift */; };
+		264AC2D42C197C01004E83E0 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AC2D22C197C01004E83E0 /* IntrinsicTableView.swift */; };
 		26738D7C2C182569008DF0BC /* ModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D7B2C182569008DF0BC /* ModalPresenter.swift */; };
 		26738D802C182A9E008DF0BC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D7F2C182A9E008DF0BC /* Colors.swift */; };
 		26738D822C182B5E008DF0BC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738D812C182B5E008DF0BC /* UIColor+Extension.swift */; };
@@ -50,6 +52,8 @@
 		264AC2CB2C196CA8004E83E0 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		264AC2CD2C196DE3004E83E0 /* StartModalOnMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartModalOnMapVC.swift; sourceTree = "<group>"; };
 		264AC2CF2C197308004E83E0 /* LastAddressGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastAddressGridCell.swift; sourceTree = "<group>"; };
+		264AC2D12C197C01004E83E0 /* IntrinsicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicCollectionView.swift; sourceTree = "<group>"; };
+		264AC2D22C197C01004E83E0 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		26738D7B2C182569008DF0BC /* ModalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
 		26738D7F2C182A9E008DF0BC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		26738D812C182B5E008DF0BC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				26738D9E2C185E72008DF0BC /* CommonModalViewController.swift */,
+				264AC2D12C197C01004E83E0 /* IntrinsicCollectionView.swift */,
+				264AC2D22C197C01004E83E0 /* IntrinsicTableView.swift */,
 			);
 			path = CustomViewControllers;
 			sourceTree = "<group>";
@@ -444,11 +450,13 @@
 				26738DA12C1860B5008DF0BC /* UIView+Extension.swift in Sources */,
 				26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */,
 				C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */,
+				264AC2D42C197C01004E83E0 /* IntrinsicTableView.swift in Sources */,
 				C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */,
 				26738D7C2C182569008DF0BC /* ModalPresenter.swift in Sources */,
 				C39A22282BFFB33600F1E6D7 /* Extensions.swift in Sources */,
 				26738D822C182B5E008DF0BC /* UIColor+Extension.swift in Sources */,
 				264AC2CE2C196DE3004E83E0 /* StartModalOnMapVC.swift in Sources */,
+				264AC2D32C197C01004E83E0 /* IntrinsicCollectionView.swift in Sources */,
 				26738DA72C186463008DF0BC /* SubtitleLabel.swift in Sources */,
 				26738D9F2C185E72008DF0BC /* CommonModalViewController.swift in Sources */,
 				C3326B322BFFA39600234D26 /* Constants.swift in Sources */,
