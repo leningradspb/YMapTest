@@ -9,6 +9,7 @@ import UIKit
 
 final class StartModalOnMapVC: UIViewController {
     private let collectionView = IntrinsicLastAddressesOnMapCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let collectionViewGradientView = GradientView()
     // локализаций еще не было, поэтому хардкод
     private let whereToGoButton = PrimaryButton(text: "Куда едем?", isNavigateIcon: true)
     
@@ -29,6 +30,7 @@ final class StartModalOnMapVC: UIViewController {
     
     private func setupUI() {
         setupWhereToGoButton()
+        setupCollectionViewGradientView()
         setupCollection()
     }
     
@@ -42,15 +44,29 @@ final class StartModalOnMapVC: UIViewController {
         }
     }
     
+    private func setupCollectionViewGradientView() {
+        view.addSubview(collectionViewGradientView)
+        collectionViewGradientView.startLocation = 0
+        collectionViewGradientView.endLocation = 0.1
+        collectionViewGradientView.startColor = .white.withAlphaComponent(0.1)
+        collectionViewGradientView.endColor = .white
+        
+        
+        collectionViewGradientView.snp.makeConstraints {
+            $0.top.equalTo(view.snp.bottom).offset(-120)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(900)
+        }
+    }
+    
     private func setupCollection() {
         view.addSubview(collectionView)
-        
+        collectionView.backgroundColor = .clear
         collectionView.snp.makeConstraints {
-//            $0.top.equalToSuperview().offset(100)
             $0.top.equalTo(whereToGoButton.snp.bottom)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-//            $0.height.equalTo(110)
             $0.bottom.equalToSuperview()
         }
         

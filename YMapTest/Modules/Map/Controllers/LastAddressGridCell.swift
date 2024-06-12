@@ -8,7 +8,7 @@
 import UIKit
 
 final class LastAddressGridCell: UICollectionViewCell {
-    
+    private let pinImageView = UIImageView(image: UIImage(named: Constants.Icons.lastAddressGridPin))
     func update(with model: StartModalOnMapVC.StartModalOnMapModel) {
         print(model.address)
         contentView.backgroundColor = .yellow
