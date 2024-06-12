@@ -53,3 +53,20 @@ extension UIWindow {
         key?.safeAreaInsets.bottom ?? 0
     }
 }
+/// нужно чтобы не было hash коллизий
+extension Sequence where Iterator.Element: Hashable {
+    var uniqueElements: [Iterator.Element] {
+        var seen: [Iterator.Element: Bool] = [:]
+        return self.filter { seen.updateValue(true, forKey: $0) == nil }
+    }
+}
+
+
+extension Collection {
+    subscript(safe index: Index?) -> Element? {
+        if index == nil {
+            return nil
+        }
+        return indices.contains(index!) ? self[index!] : nil
+    }
+}

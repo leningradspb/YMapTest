@@ -86,3 +86,15 @@ final class ButtonTapRecognizer: UILongPressGestureRecognizer {
         self.minimumPressDuration = .leastNonzeroMagnitude
     }
 }
+
+extension UITableViewCell {
+    static var identifier: String {
+        "\(self)"
+    }
+}
+
+extension UICollectionReusableView {
+    static var identifier: String {
+        "\(self)"
+    }
+}

@@ -15,10 +15,12 @@ struct Constants {
         static let commonHorizontal: CGFloat = 24
         /// 24
         static let extraVertical: CGFloat = 24
-        /// 44
-        static let bottomPadding: CGFloat = 44
+        /// 20
+        static let mediumVertical: CGFloat = 20
         /// 16
         static let commonVertical: CGFloat = 16
+        /// 44
+        static let bottomPadding: CGFloat = 44
         /// 50
         static let mapButton: CGFloat = 50
         /// -30
