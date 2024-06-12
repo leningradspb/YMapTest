@@ -47,7 +47,7 @@ final class StartModalOnMapVC: UIViewController {
     private func setupCollectionViewGradientView() {
         view.addSubview(collectionViewGradientView)
         collectionViewGradientView.startLocation = 0
-        collectionViewGradientView.endLocation = 0.1
+        collectionViewGradientView.endLocation = 0.2
         collectionViewGradientView.startColor = .white.withAlphaComponent(0.1)
         collectionViewGradientView.endColor = .white
         

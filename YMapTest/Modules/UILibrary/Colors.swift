@@ -119,6 +119,19 @@ public extension UIColor {
             }
         }
     }()
+    
+    /// цвет тени
+    static var shadowColor: UIColor = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                /// Return the color for Dark Mode
+                return .shadowBlackColor
+            } else {
+                /// Return the color for Light Mode
+                return .shadowBlackColor
+            }
+        }
+    }()
 }
 
 private extension UIColor {
@@ -134,4 +147,6 @@ private extension UIColor {
     static let modalBackViewLightModeColor = UIColor(hex: "#070707").withAlphaComponent(0.6)
     ///#555555
     static let lightGreyColor = UIColor(hex: "#555555")
+    /// #252525
+    static let shadowBlackColor = UIColor(hex: "#252525", alpha: 0.1)
 }

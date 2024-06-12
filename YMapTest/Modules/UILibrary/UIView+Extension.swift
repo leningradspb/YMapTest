@@ -18,6 +18,18 @@ extension UIView {
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
+    func setCellShadow(shadowColor: UIColor = .shadowColor,
+                       shadowRadius: CGFloat = 10, shadowOpacity: Float = 1,
+                       shadowOffsetWidth: Int = 1, shadowOffsetHeight: Int = 0) {
+        layer.masksToBounds = false
+        layer.shadowOffset = CGSize(width: shadowOffsetWidth, height: shadowOffsetHeight)
+        layer.shadowRadius = shadowRadius
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowColor = shadowColor.cgColor
+        layer.rasterizationScale = UIScreen.main.scale
+        layer.shouldRasterize = true
+        layer.drawsAsynchronously = true
+    }
 }
 
 extension UIStackView {

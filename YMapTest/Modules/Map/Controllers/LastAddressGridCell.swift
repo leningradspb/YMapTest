@@ -19,11 +19,14 @@ final class LastAddressGridCell: UICollectionViewCell {
     /// 20
     private let labelTopOffset: CGFloat = 20
     /// 12
-    private let labelHorizontalOffset: CGFloat = 12
+    private let labelLeadingOffset: CGFloat = 12
+    /// 20
+    private let labelTrailingOffset: CGFloat = 20
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupUI()
+        setCellShadow()
     }
     
     required init?(coder: NSCoder) {
@@ -45,8 +48,8 @@ final class LastAddressGridCell: UICollectionViewCell {
         
         labelsStack.snp.makeConstraints {
             $0.top.equalToSuperview().offset(labelTopOffset)
-            $0.leading.equalToSuperview().offset(labelHorizontalOffset)
-            $0.trailing.equalToSuperview().offset(labelHorizontalOffset)
+            $0.leading.equalToSuperview().offset(labelLeadingOffset)
+            $0.trailing.equalToSuperview().offset(-labelTrailingOffset)
         }
         pinImageView.clipsToBounds = true
 //        pinImageView.contentMode = .scaleAspectFill
