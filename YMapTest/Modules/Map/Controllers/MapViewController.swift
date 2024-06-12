@@ -73,7 +73,10 @@ final class MapViewController: UIViewController {
     
     private let startModalOnMap = StartModalOnMapVC()
     
-    
+    //точка подачи
+    private let startPointStack = VerticalStackView(spacing: 2)
+    private let startPointConstLabel = SecondaryLabel(text: "Точка подачи", textAlignment: .center, fontSize: 12)
+    private let startPointValueLabel = TitleLabel(text: "Восточная 7Г", textAlignment: .center, fontSize: 16)
     
     
     override func viewDidLoad() {
@@ -149,6 +152,7 @@ final class MapViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
         setupMap()
+        setupStartPointView()
         
 //        for family in UIFont.familyNames {
 //                print("family:", family)
@@ -445,6 +449,9 @@ final class MapViewController: UIViewController {
     
     private func movePinOnMap(by point: YMKPoint, finished: Bool) {
         pinPoint = point
+        if finished {
+            startPointValueLabel.text = "\(point.latitude)"
+        }
         
 //        if finished {
 //            UIView.animate(withDuration: 0.25, animations: {
@@ -483,6 +490,17 @@ final class MapViewController: UIViewController {
 //              )
 //          )
 //        userLocationPinPlacemark = viewStartPlacemark
+    }
+    
+    /// Точка подачи лейбл
+    private func setupStartPointView() {
+        view.addSubview(startPointStack)
+        startPointStack.addArranged(subviews: [startPointConstLabel, startPointValueLabel])
+        
+        startPointStack.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Constants.Layout.extraVertical)
+            $0.centerX.equalToSuperview()
+        }
     }
     
     private func changeModalStateToTip() {
