@@ -157,7 +157,8 @@ extension ModalPresenter: FloatingPanelControllerDelegate {
             let loc = fpc.surfaceLocation
             let currentY = loc.y
             if currentY + availableScrollToTopYOffset < initialSurfaceScrollViewOffsetY  {
-                fpc.surfaceLocation = CGPoint(x: loc.x, y: initialSurfaceScrollViewOffsetY - availableScrollToTopYOffset)
+                changeModalState(state: .full)
+//                fpc.surfaceLocation = CGPoint(x: loc.x, y: initialSurfaceScrollViewOffsetY - availableScrollToTopYOffset)
             }
         }
     }
