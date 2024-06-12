@@ -8,7 +8,7 @@
 import UIKit
 
 final class StartModalOnMapVC: UIViewController {
-    private let collectionView = IntrinsicCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let collectionView = IntrinsicLastAddressesOnMapCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     // локализаций еще не было, поэтому хардкод
     private let whereToGoButton = PrimaryButton(text: "Куда едем?", isNavigateIcon: true)
     
@@ -47,14 +47,15 @@ final class StartModalOnMapVC: UIViewController {
         
         collectionView.snp.makeConstraints {
 //            $0.top.equalToSuperview().offset(100)
-            $0.top.equalTo(whereToGoButton.snp.bottom).offset(Constants.Layout.mediumVertical)
-            $0.leading.equalToSuperview().offset(Constants.Layout.commonHorizontal)
-            $0.trailing.equalToSuperview().offset(-Constants.Layout.commonHorizontal)
+            $0.top.equalTo(whereToGoButton.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
 //            $0.height.equalTo(110)
-            $0.bottom.equalToSuperview().offset(-Constants.Layout.bottomPadding)
+            $0.bottom.equalToSuperview()
         }
         
         collectionView.register(LastAddressGridCell.self, forCellWithReuseIdentifier: LastAddressGridCell.identifier)
+        collectionView.contentInset = UIEdgeInsets(top: Constants.Layout.mediumVertical, left: Constants.Layout.commonHorizontal, bottom: Constants.Layout.bottomPadding, right: Constants.Layout.commonHorizontal)
         collectionView.delegate = self
         collectionView.dataSource = self
 //        collectionView.collectionViewLayout = makeCollectionViewLayout()

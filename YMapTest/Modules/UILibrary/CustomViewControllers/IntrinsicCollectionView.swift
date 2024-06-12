@@ -19,7 +19,7 @@ final class IntrinsicCollectionView: UICollectionView
 }
 
 // Нужно для того, чтобы корректно отрабатывали тени у ячеек (иначе обрезаются) E.K
-final class IntrinsicTagsCollectionView: UICollectionView
+final class IntrinsicLastAddressesOnMapCollectionView: UICollectionView
 {
     override var contentSize: CGSize
     {
@@ -31,6 +31,6 @@ final class IntrinsicTagsCollectionView: UICollectionView
     override var intrinsicContentSize: CGSize
     {
         self.layoutIfNeeded()
-        return CGSize(width: UIView.noIntrinsicMetric, height: contentSize.height + 28)
+        return CGSize(width: UIView.noIntrinsicMetric, height: contentSize.height + Constants.Layout.mediumVertical + Constants.Layout.bottomPadding)
     }
 }
