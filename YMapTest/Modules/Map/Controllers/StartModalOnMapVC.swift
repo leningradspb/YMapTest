@@ -8,7 +8,7 @@
 import UIKit
 
 final class StartModalOnMapVC: UIViewController {
-    private let collectionView = IntrinsicCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()) // UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let collectionView = IntrinsicCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     // локализаций еще не было, поэтому хардкод
     private let whereToGoButton = PrimaryButton(text: "Куда едем?", isNavigateIcon: true)
     
@@ -25,13 +25,6 @@ final class StartModalOnMapVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(animated)
-        print(collectionView.intrinsicContentSize.height)
-        collectionView.reloadData()
     }
     
     private func setupUI() {

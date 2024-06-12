@@ -27,7 +27,7 @@ public class ModalPresenter {
     
     private init() {}
     
-    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true, surfaceViewBackgroundColor: UIColor = .primaryColor) {
+    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, isBackdropViewHidden: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true, surfaceViewBackgroundColor: UIColor = .primaryColor) {
         fpc = FloatingPanelController()
         
         switch state {
@@ -41,6 +41,7 @@ public class ModalPresenter {
         
         fpc.delegate = self // Optional
         fpc.backdropView.backgroundColor = .modalBackViewColor
+        fpc.backdropView.isHidden = isBackdropViewHidden
         fpc.surfaceView.backgroundColor = surfaceViewBackgroundColor
         fpc.surfaceView.appearance.cornerRadius = ModalPresenter.Constants.surfaceViewCornerRadius
         fpc.surfaceView.grabberHandle.isHidden = isGrabberHandleHidden

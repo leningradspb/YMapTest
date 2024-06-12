@@ -76,14 +76,11 @@ final class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setupLocationService()
         setupUI()
-        
         
         locationService.locationUpdatedCompletion = { [weak self] location in
             self?.updateMap2(by: location)
         }
-        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
 //            self.addPlaceMark(latitude: 59.961075, longitude: 30.260612)
@@ -119,7 +116,8 @@ final class MapViewController: UIViewController {
 //            let vc = CommonModalViewController(model: model)
             
             let vc = StartModalOnMapVC()
-            ModalPresenter.shared.presentModalController(contentVC: vc)
+            ModalPresenter.shared.presentModalController(contentVC: vc, surfaceViewBackgroundColor: .clear)
+//            ModalPresenter.shared.presentModalController(contentVC: vc, isBackdropViewHidden: false)
 //            Router.bottomSheet.present(vc)
         })
     }
@@ -146,7 +144,7 @@ final class MapViewController: UIViewController {
 //    }
 
     private func setupUI() {
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         setupMap()
         
 //        for family in UIFont.familyNames {
