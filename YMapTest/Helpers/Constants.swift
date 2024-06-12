@@ -62,6 +62,7 @@ struct Constants {
         static let primaryButtonNavigateIcon = "primary_button_navigate_icon"
         static let primaryButtonXIcon = "primary_button_x_icon"
         static let lastAddressGridPin = "last_address_grid_pin"
+        static let selectAddressPin = "select_address_pin"
     }
     
     enum MapButtons: CaseIterable {

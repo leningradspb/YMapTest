@@ -159,7 +159,7 @@ extension ModalPresenter: FloatingPanelControllerDelegate {
         switch modalState {
         case .full:
             let loc = fpc.surfaceLocation
-                  let currentY = loc.y
+            let currentY = loc.y
             // TODO: сделать умнее. отвечает за свайп вниз. если офсет больше 220, то сворачивает модалку
             if currentY > 220 {
                 fpc.removePanelFromParent(animated: true)
