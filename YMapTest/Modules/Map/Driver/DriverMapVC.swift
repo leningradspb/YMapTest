@@ -286,14 +286,14 @@ final class DriverMapVC: UIViewController {
           
         // Настройка и добавление иконки
         viewStartPlacemark.setIconWith(
-            UIImage(named: Constants.Icons.userLocationIcon)!, // Убедитесь, что у вас есть иконка для точки
+            UIImage(named: Constants.Icons.carLightTheme)!, // Убедитесь, что у вас есть иконка для точки
               style: YMKIconStyle(
                   anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
                   rotationType: YMKRotationType.rotate.rawValue as NSNumber,
                   zIndex: 0,
                   flat: true,
                   visible: true,
-                  scale: 0.1,
+                  scale: 0.7,
                   tappableArea: nil
               )
           )
