@@ -43,7 +43,15 @@ public class ModalPresenter {
         fpc.backdropView.backgroundColor = .modalBackViewColor
         fpc.backdropView.isHidden = isBackdropViewHidden
         fpc.surfaceView.backgroundColor = surfaceViewBackgroundColor
-        fpc.surfaceView.appearance.cornerRadius = ModalPresenter.Constants.surfaceViewCornerRadius
+        if surfaceViewBackgroundColor == .clear {
+            fpc.surfaceView.appearance.shadows = []
+        } else {
+            fpc.surfaceView.appearance.cornerRadius = ModalPresenter.Constants.surfaceViewCornerRadius
+        }
+        
+//        fpc.surfaceView.appearance.shadows.forEach {
+//            $0.hidden = true
+//        }
         fpc.surfaceView.grabberHandle.isHidden = isGrabberHandleHidden
         fpc.set(contentViewController: contentVC)
         
