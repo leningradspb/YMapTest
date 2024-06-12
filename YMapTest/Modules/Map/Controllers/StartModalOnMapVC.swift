@@ -42,6 +42,12 @@ final class StartModalOnMapVC: UIViewController {
             $0.leading.equalToSuperview().offset(Constants.Layout.commonHorizontal)
             $0.trailing.equalToSuperview().offset(-Constants.Layout.commonHorizontal)
         }
+        
+        whereToGoButton.addActionOnTap { [weak self] in
+            guard let self = self else { return }
+            let vc = EnterAddressModalVC()
+            ModalPresenter.shared.presentModalController(contentVC: vc, state: .full, isGrabberHandleHidden: false, isLongTopSwipeRestricted: false, addWithAnimation: true)
+        }
     }
     
     private func setupCollectionViewGradientView() {

@@ -1,16 +1,16 @@
 //
-//  ModalPresenter.swift
+//  MapStartModalPresenter.swift
 //  YMapTest
 //
-//  Created by Eduard Kanevskii on 11.06.2024.
+//  Created by Eduard Kanevskii on 12.06.2024.
 //
 
 import UIKit
 import FloatingPanel
 
-/// Пресентер по отображению модалок
-public class ModalPresenter {
-    public static let shared = ModalPresenter()
+/// Пресентер по отображению модалки на главном экране (она живет всегда, нужно отдельное флоу)
+public class MapStartModalPresenter {
+    public static let shared = MapStartModalPresenter()
     public var fpc: FloatingPanelController!
     public var isPresentingNow: Bool = false
     public var currentState: FloatingPanelState {
@@ -37,18 +37,18 @@ public class ModalPresenter {
     
     private init() {}
     
-    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, isBackdropViewHidden: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true, surfaceViewBackgroundColor: UIColor = .primaryColor, isLongTopSwipeRestricted: Bool = true, addWithAnimation: Bool = false) {
+    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, isBackdropViewHidden: Bool = true, state: ModalPresenter.ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true, surfaceViewBackgroundColor: UIColor = .primaryColor, isLongTopSwipeRestricted: Bool = true, addWithAnimation: Bool = false) {
         fpc = FloatingPanelController()
         
         fpc.isRemovalInteractionEnabled = isRemovalInteractionEnabled
         switch state {
         case .intrinsic:
-            fpc.layout = IntrinsicPanelLayout()
+            fpc.layout = ModalPresenter.IntrinsicPanelLayout()
         case .full:
-            fpc.layout = FullPanelLayout()
+            fpc.layout = ModalPresenter.FullPanelLayout()
         case .intrinsicAndTip(let absoluteInset):
             fpc.isRemovalInteractionEnabled = false
-            fpc.layout = IntrinsicAndTipMapModalPanelLayout(absoluteInset: absoluteInset)
+            fpc.layout = ModalPresenter.IntrinsicAndTipMapModalPanelLayout(absoluteInset: absoluteInset)
         }
         
         fpc.delegate = self // Optional
@@ -99,44 +99,8 @@ public class ModalPresenter {
         fpc?.removePanelFromParent(animated: true)
     }
 }
-public extension ModalPresenter {
-    class IntrinsicPanelLayout: FloatingPanelBottomLayout {
-        public override var initialState: FloatingPanelState { .full }
-        public override var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
-            return [
-                .full: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.0, referenceGuide: .superview)
-            ]
-        }
-    }
-    
-    /// Модалка Куда едем и последние 4 адреса
-    class IntrinsicAndTipMapModalPanelLayout: FloatingPanelBottomLayout {
-        private let absoluteInset: CGFloat
-        public init(absoluteInset: CGFloat) {
-            self.absoluteInset = absoluteInset
-            super.init()
-        }
-        
-        public override var initialState: FloatingPanelState { .full }
-        public override var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
-            return [
-                .full: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.0, referenceGuide: .superview),
-                .tip: FloatingPanelLayoutAnchor(absoluteInset: absoluteInset, edge: .bottom, referenceGuide: .superview)
-            ]
-        }
-    }
-    
-    class FullPanelLayout: FloatingPanelLayout {
-        public let position: FloatingPanelPosition = .bottom
-        public let initialState: FloatingPanelState = .full
-        public let anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] = [
-               .full: FloatingPanelLayoutAnchor(absoluteInset: 60, edge: .top, referenceGuide: .superview)
-           ]
-       }
-}
 
-
-extension ModalPresenter: FloatingPanelControllerDelegate {
+extension MapStartModalPresenter: FloatingPanelControllerDelegate {
     public func floatingPanelDidEndDragging(_ fpc: FloatingPanelController, willAttract attract: Bool) {
     }
     
@@ -165,17 +129,5 @@ extension ModalPresenter: FloatingPanelControllerDelegate {
     
     public func floatingPanelDidRemove(_ fpc: FloatingPanelController) {
         isPresentingNow = false
-    }
-}
-
-public extension ModalPresenter {
-    enum ModalState {
-        case full, intrinsic, intrinsicAndTip(tipFractionalOffset: CGFloat)
-    }
-}
-
-public extension ModalPresenter {
-    struct Constants {
-        static let surfaceViewCornerRadius: CGFloat = 24
     }
 }

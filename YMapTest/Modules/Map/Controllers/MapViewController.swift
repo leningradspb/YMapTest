@@ -119,7 +119,7 @@ final class MapViewController: UIViewController {
 //            let vc = CommonModalViewController(model: model)
             
             
-            ModalPresenter.shared.presentModalController(contentVC: self.startModalOnMap, state: .intrinsicAndTip(tipFractionalOffset: 130), surfaceViewBackgroundColor: .clear)
+            MapStartModalPresenter.shared.presentModalController(contentVC: self.startModalOnMap, state: .intrinsicAndTip(tipFractionalOffset: 130), surfaceViewBackgroundColor: .clear)
 //            ModalPresenter.shared.presentModalController(contentVC: vc, isBackdropViewHidden: false)
 //            Router.bottomSheet.present(vc)
         })
@@ -326,7 +326,7 @@ final class MapViewController: UIViewController {
                     cameraCallback: { [weak self] finished in
                         guard let self = self else { return }
                         print("finished", finished)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute:  {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute:  {
                             self.isInitialMapZoomFinished = true
                         })
                         
@@ -486,14 +486,14 @@ final class MapViewController: UIViewController {
     }
     
     private func changeModalStateToTip() {
-        if ModalPresenter.shared.currentState != .tip {
-            ModalPresenter.shared.changeModalState(state: .tip)
+        if MapStartModalPresenter.shared.currentState != .tip {
+            MapStartModalPresenter.shared.changeModalState(state: .tip)
         }
     }
     
     private func changeModalStateToFull() {
-        if ModalPresenter.shared.currentState != .full {
-            ModalPresenter.shared.changeModalState(state: .full)
+        if MapStartModalPresenter.shared.currentState != .full {
+            MapStartModalPresenter.shared.changeModalState(state: .full)
         }
     }
     
@@ -631,7 +631,7 @@ extension MapViewController: YMKMapCameraListener {
     func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
 //        print(cameraPosition.target.latitude, cameraPosition.target.longitude, finished)
         movePinOnMap(by: cameraPosition.target, finished: finished)
-        if ModalPresenter.shared.isPresentingNow, isInitialMapZoomFinished {
+        if MapStartModalPresenter.shared.isPresentingNow, isInitialMapZoomFinished {
             changeModalStateToTip()
         }
         
