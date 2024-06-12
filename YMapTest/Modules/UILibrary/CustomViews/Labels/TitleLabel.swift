@@ -8,11 +8,11 @@
 import UIKit
 
 public class TitleLabel: UILabel {
-    public init(text: String = "", numberOfLines: Int = 0, textAlignment: NSTextAlignment = .left) {
+    public init(text: String = "", numberOfLines: Int = 0, textAlignment: NSTextAlignment = .left, fontSize: CGFloat = 18) {
         super.init(frame: .zero)
         self.numberOfLines = numberOfLines
         self.textColor = .textColor
-        self.font = .appFont(weight: .medium, size: 18)
+        self.font = .appFont(weight: .medium, size: fontSize)
         self.textAlignment = textAlignment
         self.setContentHuggingPriority(.required, for: .vertical)
         self.setContentHuggingPriority(.required, for: .horizontal)

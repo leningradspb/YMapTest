@@ -31,6 +31,8 @@ struct Constants {
         static let buttonHeight: CGFloat = 64
         /// 32
         static let buttonCornerRadius: CGFloat = 32
+        /// 16
+        static let cellMediumCornerRadius: CGFloat = 16
         /// 14
         static let primaryButtonIconValue: CGFloat = 14
         /// 12

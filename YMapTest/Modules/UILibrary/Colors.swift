@@ -32,6 +32,17 @@ public extension UIColor {
         }
     }()
     
+    /// цвет сереньких сайблов (сабтайлтов не черных)
+    static var secondaryTextColor: UIColor = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return .lightGreyColor
+            } else {
+                return .lightGreyColor
+            }
+        }
+    }()
+    
     /// Основной цвет кнопки (темная тема = белый, светлая - черный)
     static var primaryButtonBackgroundColor: UIColor = {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
@@ -96,6 +107,18 @@ public extension UIColor {
             }
         }
     }()
+    /// основной фон ячеек
+    static var cellBackgroundColor: UIColor = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                /// Return the color for Dark Mode
+                return .mainBlack
+            } else {
+                /// Return the color for Light Mode
+                return .mainWhite
+            }
+        }
+    }()
 }
 
 private extension UIColor {
@@ -109,4 +132,6 @@ private extension UIColor {
     static let modalBackViewDarkModeColor = UIColor.clear
     /// #070707 with alpha 0.6
     static let modalBackViewLightModeColor = UIColor(hex: "#070707").withAlphaComponent(0.6)
+    ///#555555
+    static let lightGreyColor = UIColor(hex: "#555555")
 }
