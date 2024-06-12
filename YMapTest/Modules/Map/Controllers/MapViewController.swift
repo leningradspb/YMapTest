@@ -116,7 +116,7 @@ final class MapViewController: UIViewController {
 //            let vc = CommonModalViewController(model: model)
             
             let vc = StartModalOnMapVC()
-            ModalPresenter.shared.presentModalController(contentVC: vc, surfaceViewBackgroundColor: .clear)
+            ModalPresenter.shared.presentModalController(contentVC: vc, state: .intrinsicAndTip(tipFractionalOffset: 120), surfaceViewBackgroundColor: .clear)
 //            ModalPresenter.shared.presentModalController(contentVC: vc, isBackdropViewHidden: false)
 //            Router.bottomSheet.present(vc)
         })

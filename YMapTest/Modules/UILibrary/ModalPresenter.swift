@@ -36,13 +36,15 @@ public class ModalPresenter {
     public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, isBackdropViewHidden: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true, surfaceViewBackgroundColor: UIColor = .primaryColor, isLongTopSwipeRestricted: Bool = true) {
         fpc = FloatingPanelController()
         
+        fpc.isRemovalInteractionEnabled = isRemovalInteractionEnabled
         switch state {
         case .intrinsic:
             fpc.layout = IntrinsicPanelLayout()
         case .full:
             fpc.layout = FullPanelLayout()
-        default:
-            fpc.layout = IntrinsicPanelLayout()
+        case .intrinsicAndTip(let absoluteInset):
+            fpc.isRemovalInteractionEnabled = false
+            fpc.layout = IntrinsicAndTipMapModalPanelLayout(absoluteInset: absoluteInset)
         }
         
         fpc.delegate = self // Optional
@@ -65,7 +67,7 @@ public class ModalPresenter {
             fpc.backdropView.addGestureRecognizer(tapGesture)
         }
 
-        fpc.isRemovalInteractionEnabled = isRemovalInteractionEnabled // Optional: Let it removable by a swipe-down
+        
 
 //        rootVC?.present(fpc, animated: true, completion: nil)
         if let rootVC {
@@ -87,6 +89,23 @@ public extension ModalPresenter {
         public override var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
             return [
                 .full: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.0, referenceGuide: .superview)
+            ]
+        }
+    }
+    
+    /// Модалка Куда едем и последние 4 адреса
+    class IntrinsicAndTipMapModalPanelLayout: FloatingPanelBottomLayout {
+        private let absoluteInset: CGFloat
+        public init(absoluteInset: CGFloat) {
+            self.absoluteInset = absoluteInset
+            super.init()
+        }
+        
+        public override var initialState: FloatingPanelState { .full }
+        public override var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
+            return [
+                .full: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.0, referenceGuide: .superview),
+                .tip: FloatingPanelLayoutAnchor(absoluteInset: absoluteInset, edge: .bottom, referenceGuide: .superview)
             ]
         }
     }
@@ -131,8 +150,7 @@ extension ModalPresenter: FloatingPanelControllerDelegate {
 
 public extension ModalPresenter {
     enum ModalState {
-        case full, intrinsic
-        case custom(value: CGFloat)
+        case full, intrinsic, intrinsicAndTip(tipFractionalOffset: CGFloat)
     }
 }
 
