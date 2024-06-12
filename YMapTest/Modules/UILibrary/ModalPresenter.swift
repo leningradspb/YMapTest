@@ -12,6 +12,12 @@ import FloatingPanel
 public class ModalPresenter {
     public static let shared = ModalPresenter()
     public var fpc: FloatingPanelController!
+    /// для ограничения чрезмерного поднятия модалки вверх
+    private var isLongTopSwipeRestricted: Bool = true
+    /// для ограничения чрезмерного поднятия модалки вверх
+    private var initialSurfaceScrollViewOffsetY: CGFloat?
+    /// для ограничения чрезмерного поднятия модалки вверх
+    private let availableScrollToTopYOffset: CGFloat = 60
     
     private lazy var rootVC: UIViewController? = {
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
@@ -27,7 +33,7 @@ public class ModalPresenter {
     
     private init() {}
     
-    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, isBackdropViewHidden: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true, surfaceViewBackgroundColor: UIColor = .primaryColor) {
+    public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, isBackdropViewHidden: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true, surfaceViewBackgroundColor: UIColor = .primaryColor, isLongTopSwipeRestricted: Bool = true) {
         fpc = FloatingPanelController()
         
         switch state {
@@ -48,10 +54,8 @@ public class ModalPresenter {
         } else {
             fpc.surfaceView.appearance.cornerRadius = ModalPresenter.Constants.surfaceViewCornerRadius
         }
+        self.isLongTopSwipeRestricted = isLongTopSwipeRestricted
         
-//        fpc.surfaceView.appearance.shadows.forEach {
-//            $0.hidden = true
-//        }
         fpc.surfaceView.grabberHandle.isHidden = isGrabberHandleHidden
         fpc.set(contentViewController: contentVC)
         
@@ -98,7 +102,31 @@ public extension ModalPresenter {
 
 
 extension ModalPresenter: FloatingPanelControllerDelegate {
+    public func floatingPanelDidEndDragging(_ fpc: FloatingPanelController, willAttract attract: Bool) {
+    }
     
+    public func floatingPanelWillBeginDragging(_ fpc: FloatingPanelController) {
+        if isLongTopSwipeRestricted {
+            if initialSurfaceScrollViewOffsetY == nil {
+                initialSurfaceScrollViewOffsetY = fpc.surfaceLocation.y
+            }
+        }
+    }
+    
+    public func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+//        print("floatingPanelDidChangeState")
+    }
+    
+    public func floatingPanelDidMove(_ fpc: FloatingPanelController) {
+        if isLongTopSwipeRestricted, let initialSurfaceScrollViewOffsetY {
+            let loc = fpc.surfaceLocation
+            let currentY = loc.y
+            if currentY + availableScrollToTopYOffset < initialSurfaceScrollViewOffsetY  {
+                fpc.surfaceLocation = CGPoint(x: loc.x, y: initialSurfaceScrollViewOffsetY - availableScrollToTopYOffset)
+            }
+        }
+        
+    }
 }
 
 public extension ModalPresenter {

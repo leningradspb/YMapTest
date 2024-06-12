@@ -56,7 +56,7 @@ final class StartModalOnMapVC: UIViewController {
             $0.top.equalTo(view.snp.bottom).offset(-120)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.height.equalTo(900)
+            $0.height.equalTo(500)
         }
     }
     
