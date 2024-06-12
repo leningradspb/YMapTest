@@ -40,6 +40,10 @@ final class DriverMapVC: UIViewController {
     private var currentZoom: Float = Constants.YMakpKit.zoom
     private var isInitialMapZoomFinished: Bool = false
     
+    /// Выйти на линию / уйти с линии
+    private let onLineButton = PrimaryButton(text: "Выйти на линию")
+    private var isOnLine = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +58,7 @@ final class DriverMapVC: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
         setupMap()
+        setupJobButton()
     }
     
     private func setupLocationService() {
@@ -66,6 +71,30 @@ final class DriverMapVC: UIViewController {
         locationService.locationUpdatedCompletion = { [weak self] userLocation in
             guard let self = self else { return }
             self.updateMap(by: userLocation)
+        }
+    }
+    
+    private func setupJobButton() {
+        view.addSubview(onLineButton)
+        
+        onLineButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(Constants.Layout.commonHorizontal)
+            $0.trailing.equalToSuperview().offset(-Constants.Layout.commonHorizontal)
+            $0.bottom.equalToSuperview().offset(-Constants.Layout.bottomPadding)
+        }
+        
+        onLineButton.addActionOnTap { [weak self] in
+            guard let self = self else { return }
+            self.changeOnLineState()
+        }
+    }
+    
+    private func changeOnLineState() {
+        isOnLine.toggle()
+        if isOnLine {
+            onLineButton.text = "Уйти с линии"
+        } else {
+            onLineButton.text = "Выйти на линию"
         }
     }
     
