@@ -10,7 +10,6 @@ import FloatingPanel
 
 /// Пресентер по отображению модалок
 public class ModalPresenter {
-    public static let shared = ModalPresenter()
     public var fpc: FloatingPanelController!
     public var isPresentingNow: Bool = false
     public var currentState: FloatingPanelState {
@@ -37,7 +36,7 @@ public class ModalPresenter {
         return nil
     }()
     
-    private init() {}
+    public init() {}
     
     public func presentModalController(contentVC: UIViewController, isRemovalInteractionEnabled: Bool = true, isBackdropViewHidden: Bool = true, state: ModalState = .intrinsic, isGrabberHandleHidden: Bool = true, isHideByTapGesture: Bool = true, surfaceViewBackgroundColor: UIColor = .primaryColor, isLongTopSwipeRestricted: Bool = true, addWithAnimation: Bool = false) {
         fpc = FloatingPanelController()
