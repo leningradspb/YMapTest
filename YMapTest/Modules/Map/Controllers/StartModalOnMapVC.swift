@@ -46,7 +46,7 @@ final class StartModalOnMapVC: UIViewController {
         whereToGoButton.addActionOnTap { [weak self] in
             guard let self = self else { return }
             let vc = EnterAddressModalVC()
-            ModalPresenter.shared.presentModalController(contentVC: vc, state: .full, isGrabberHandleHidden: false, isLongTopSwipeRestricted: false, addWithAnimation: true)
+            ModalPresenter().presentModalController(contentVC: vc, state: .full, isGrabberHandleHidden: false, isLongTopSwipeRestricted: false, addWithAnimation: true)
         }
     }
     
