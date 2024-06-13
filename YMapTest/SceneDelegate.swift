@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = DriverMapVC() // MapViewController()
+        window.rootViewController = MapViewController()  // DriverMapVC()
         window.overrideUserInterfaceStyle = .light
         self.window = window
 //        UIApplication.shared.windows.first!.overrideUserInterfaceStyle = .light

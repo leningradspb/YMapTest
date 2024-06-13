@@ -39,6 +39,7 @@
 		26738DAC2C186B14008DF0BC /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738DAB2C186B14008DF0BC /* PrimaryButton.swift */; };
 		26738DAE2C187A70008DF0BC /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26738DAD2C187A70008DF0BC /* SecondaryButton.swift */; };
 		26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4715B2C16DAFB0046ABEE /* StackViews.swift */; };
+		26F37F0B2C1ABFE2001C00F2 /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F37F0A2C1ABFE2001C00F2 /* OrderVC.swift */; };
 		C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1D2BFFA00F00234D26 /* AppDelegate.swift */; };
 		C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B1F2BFFA00F00234D26 /* SceneDelegate.swift */; };
 		C3326B222BFFA00F00234D26 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3326B212BFFA00F00234D26 /* MapViewController.swift */; };
@@ -84,6 +85,7 @@
 		26738DAB2C186B14008DF0BC /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		26738DAD2C187A70008DF0BC /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		26C4715B2C16DAFB0046ABEE /* StackViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViews.swift; sourceTree = "<group>"; };
+		26F37F0A2C1ABFE2001C00F2 /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
 		454C9011A6760420C0808EB9 /* Pods_YMapTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YMapTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B782188053772D412CD573E /* Pods-YMapTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.release.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.release.xcconfig"; sourceTree = "<group>"; };
 		6FECE9621E2AECB0CE31475D /* Pods-YMapTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMapTest.debug.xcconfig"; path = "Target Support Files/Pods-YMapTest/Pods-YMapTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				264AC2DC2C19F026004E83E0 /* DriverMapVC.swift */,
+				26F37F0A2C1ABFE2001C00F2 /* OrderVC.swift */,
 			);
 			path = Driver;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				26C4715C2C16DAFB0046ABEE /* StackViews.swift in Sources */,
 				C3326B1E2BFFA00F00234D26 /* AppDelegate.swift in Sources */,
 				264AC2D42C197C01004E83E0 /* IntrinsicTableView.swift in Sources */,
+				26F37F0B2C1ABFE2001C00F2 /* OrderVC.swift in Sources */,
 				C3326B202BFFA00F00234D26 /* SceneDelegate.swift in Sources */,
 				26738D7C2C182569008DF0BC /* ModalPresenter.swift in Sources */,
 				264AC2D62C19C5E7004E83E0 /* SecondaryLabel.swift in Sources */,
