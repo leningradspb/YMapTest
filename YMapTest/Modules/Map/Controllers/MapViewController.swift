@@ -31,7 +31,7 @@ import SnapKit
 import CoreLocation
 
 final class MapViewController: UIViewController {
-    private let mapView = YMKMapView(frame: .zero)!
+    private let mapView = YMKMapView()
     private let pinImageView = UIImageView(image: UIImage(named: Constants.Icons.selectAddressPin))
     /// стек в котором можно расположить кнопки + - локация и пауза (для паузы надо добавить пустое вью, чтобы соблюсти отступы)
     private let mapButtonsStack = VerticalStackView(spacing: Constants.Layout.mapButtonsStackSpacing)
